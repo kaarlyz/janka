@@ -28,15 +28,18 @@
 
 ### 📊 1. Dashboard & Analytics Operasional
 > *Pusat pengawasan metrik kas, sparkline tren volume 14 hari, alokasi pengiriman per kurir, serta rekapitulasi bulanan.*
-![Dashboard Analytics](docs/screenshot-dashboard.png)
+
+![Dashboard Analytics](./docs/screenshot-dashboard.png)
 
 ### 📝 2. Stasiun Input Manifest & Cetak Label
 > *Formulir pencatatan ekspres dengan fitur kalkulasi otomatis tarif, notifikasi WhatsApp pengirim, dan modal pratinjau cetak label thermal 100x150mm.*
-![Input Manifest Station](docs/screenshot-input.png)
+
+![Input Manifest Station](./docs/screenshot-input.png)
 
 ### 📖 3. Buku Ledger & Pencarian Manifest
 > *Tabel arsip manifest berukuran penuh dengan filter rentang tanggal, filter kurir, pencarian resi/pengirim, dan ekspor data Excel.*
-![Buku Ledger Table](docs/screenshot-ledger.png)
+
+![Buku Ledger Table](./docs/screenshot-ledger.png)
 
 ---
 
