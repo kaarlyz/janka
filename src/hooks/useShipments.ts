@@ -176,6 +176,36 @@ export function useShipments() {
     return Array.from(map.entries()).map(([name, address]) => ({ name, address }));
   }, [shipments]);
 
+  // 11. Restore Backup Dataset with Quota Exceeded error handling
+  const restoreBackup = useCallback((newShipments: ShipmentEntry[], newRates: CourierRateConfig): { success: boolean; error?: string } => {
+    try {
+      const shipmentsJson = JSON.stringify(newShipments);
+      const ratesJson = JSON.stringify(newRates);
+
+      // Verify writing to localStorage first to catch quota exceeded errors BEFORE updating state
+      localStorage.setItem(STORAGE_KEY, shipmentsJson);
+      localStorage.setItem(RATES_STORAGE_KEY, ratesJson);
+
+      setShipments(newShipments);
+      setRates(newRates);
+      return { success: true };
+    } catch (err: any) {
+      console.error('[Janka] Restore failed (localStorage error):', err);
+      const isQuotaError = err && (
+        err.name === 'QuotaExceededError' ||
+        err.name === 'NS_ERROR_DOM_QUOTA_REACHED' ||
+        err.code === 22 ||
+        err.code === 1014
+      );
+      return {
+        success: false,
+        error: isQuotaError
+          ? 'Penyimpanan browser (localStorage) penuh. Tidak dapat menyimpan restore dataset.'
+          : 'Gagal menyimpan data restore ke penyimpanan lokal browser.'
+      };
+    }
+  }, []);
+
   return {
     shipments,
     rates,
@@ -185,6 +215,7 @@ export function useShipments() {
     updateShipment,
     deleteShipment,
     reconcileAll,
+    restoreBackup,
     addressBook,
     setShipments
   };

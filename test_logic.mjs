@@ -122,4 +122,41 @@ for (const s of testShipments) {
 }
 assert.strictEqual(addrMap.size, 2);
 
-console.log('✓ All Janka Phase 5 tests passed (Monthly Worksheets, KAS REGULER, 6 Columns, DFOD, WhatsApp, Cost).');
+// 7. Backup & Restore JSON Schema Validation Logic Assertions
+function validateBackupJSON(rawText) {
+  if (!rawText || !rawText.trim()) return { valid: false, error: 'File backup kosong.' };
+  let parsed;
+  try {
+    parsed = JSON.parse(rawText);
+  } catch (err) {
+    return { valid: false, error: 'File backup tidak dapat dibaca: format JSON korup atau rusak.' };
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    return { valid: false, error: 'File backup tidak valid: struktur JSON harus berupa objek utama.' };
+  }
+  if (typeof parsed.version !== 'number' || parsed.version !== 1) {
+    return { valid: false, error: 'Versi format backup tidak dikenal.' };
+  }
+  if (!Array.isArray(parsed.shipments)) {
+    return { valid: false, error: 'File backup tidak valid: properti "shipments" harus berupa daftar manifest.' };
+  }
+  return { valid: true, payload: parsed };
+}
+
+// 7a. Valid Payload
+const validPayload = JSON.stringify({ version: 1, exportedAt: '2026-09-16T01:00:00.000Z', rates: { JT: 12000, JNE: 10000 }, shipments: [mockShipment] });
+const resValid = validateBackupJSON(validPayload);
+assert.strictEqual(resValid.valid, true);
+assert.strictEqual(resValid.payload.shipments.length, 1);
+
+// 7b. Corrupt JSON
+const resCorrupt = validateBackupJSON('{ invalid json ');
+assert.strictEqual(resCorrupt.valid, false);
+assert.ok(resCorrupt.error.includes('JSON korup'));
+
+// 7c. Unknown Version
+const resUnknownVer = validateBackupJSON(JSON.stringify({ version: 2, shipments: [] }));
+assert.strictEqual(resUnknownVer.valid, false);
+assert.ok(resUnknownVer.error.includes('tidak dikenal'));
+
+console.log('✓ All Janka Backup/Restore & Phase 5 tests passed (Monthly Worksheets, KAS REGULER, 6 Columns, DFOD, WhatsApp, Backup Validation).');

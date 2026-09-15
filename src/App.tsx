@@ -1,9 +1,11 @@
 import { useState, useMemo } from 'react';
 import { useShipments } from './hooks/useShipments';
 import { exportPremiumExcel, exportToCSV } from './lib/excel';
+import { exportBackupJSON } from './lib/backup';
 import { normalizeToISODate } from './lib/formatters';
 import {
   ShipmentEntry,
+  CourierRateConfig,
   FilterState,
   SortConfig,
   SortField,
@@ -18,6 +20,7 @@ import { RateSettingsDialog } from './components/RateSettingsDialog';
 import { DeleteConfirmDialog } from './components/DeleteConfirmDialog';
 import { PrintLabelDialog } from './components/PrintLabelDialog';
 import { ReconcileDialog } from './components/ReconcileDialog';
+import { BackupRestoreDialog } from './components/BackupRestoreDialog';
 
 export default function App() {
   const {
@@ -28,6 +31,7 @@ export default function App() {
     updateShipment,
     deleteShipment,
     reconcileAll,
+    restoreBackup,
     addressBook,
   } = useShipments();
 
@@ -37,6 +41,7 @@ export default function App() {
   const [selectedForPrint, setSelectedForPrint] = useState<ShipmentEntry | null>(null);
   const [isRateDialogOpen, setIsRateDialogOpen] = useState<boolean>(false);
   const [isReconcileDialogOpen, setIsReconcileDialogOpen] = useState<boolean>(false);
+  const [isRestoreDialogOpen, setIsRestoreDialogOpen] = useState<boolean>(false);
   const [isExportingExcel, setIsExportingExcel] = useState<boolean>(false);
 
   // ── TOAST NOTIFICATION ──
@@ -232,6 +237,21 @@ export default function App() {
     }
   };
 
+  // Export JSON Backup handler
+  const handleExportBackup = () => {
+    if (shipments.length === 0) {
+      showToast('Tidak ada data manifest untuk di-backup.');
+      return;
+    }
+    exportBackupJSON(shipments, rates);
+    showToast('File backup JSON (janka-backup-*.json) berhasil diunduh.');
+  };
+
+  // Restore JSON Backup handler
+  const handleRestoreBackup = (newShipments: ShipmentEntry[], newRates: CourierRateConfig) => {
+    return restoreBackup(newShipments, newRates);
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F6F8] text-[#111827] font-sans antialiased">
       {/* ── TOP OPERATIONAL HEADER ── */}
@@ -286,11 +306,13 @@ export default function App() {
 
           {/* RIGHT COLUMN: Summary + FilterBar + LedgerTable (Fluid) */}
           <section className="flex-1 min-w-0 w-full space-y-4">
-            {/* 1. Dashboard Summary Cards */}
+            {/* 1. Dashboard Summary Cards with Backup & Restore Buttons */}
             <DashboardSummary
               shipments={sortedShipments}
               rates={rates}
               onOpenRateSettings={() => setIsRateDialogOpen(true)}
+              onExportBackup={handleExportBackup}
+              onOpenRestore={() => setIsRestoreDialogOpen(true)}
             />
 
             {/* 2. Filter Controls & Actions Bar */}
@@ -359,6 +381,15 @@ export default function App() {
         onClose={() => setIsReconcileDialogOpen(false)}
         shipments={shipments}
         onApplyReconciliation={handleReconcile}
+      />
+
+      {/* 5. Backup & Restore JSON Dialog */}
+      <BackupRestoreDialog
+        isOpen={isRestoreDialogOpen}
+        onClose={() => setIsRestoreDialogOpen(false)}
+        currentShipmentsCount={shipments.length}
+        onConfirmRestore={handleRestoreBackup}
+        showToast={showToast}
       />
     </div>
   );

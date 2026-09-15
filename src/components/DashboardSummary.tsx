@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, Scale, ReceiptText, TrendingUp, Truck } from 'lucide-react';
+import { Package, Scale, ReceiptText, TrendingUp, Truck, Download, Upload } from 'lucide-react';
 import { ShipmentEntry, CourierRateConfig } from '../types';
 import { formatRupiah, formatWeight, formatNumber } from '../lib/formatters';
 
@@ -7,20 +7,24 @@ interface DashboardSummaryProps {
   shipments: ShipmentEntry[];
   rates: CourierRateConfig;
   onOpenRateSettings?: () => void;
+  onExportBackup?: () => void;
+  onOpenRestore?: () => void;
 }
 
 export const DashboardSummary: React.FC<DashboardSummaryProps> = ({
   shipments,
   rates,
-  onOpenRateSettings
+  onOpenRateSettings,
+  onExportBackup,
+  onOpenRestore,
 }) => {
   const totalShipments = shipments.length;
   const totalAmount = shipments.reduce((acc, curr) => acc + curr.amount, 0);
   const totalWeight = shipments.reduce((acc, curr) => acc + curr.weight, 0);
   const avgCostPerKg = totalWeight > 0 ? Math.round(totalAmount / totalWeight) : 0;
 
-  const jtShipments = shipments.filter(s => s.serviceType.includes('J&T') || s.resiNumber.startsWith('JT'));
-  const jneShipments = shipments.filter(s => s.serviceType.includes('JNE') || s.resiNumber.startsWith('JNE'));
+  const jtShipments = shipments.filter((s) => s.serviceType.includes('J&T') || s.resiNumber.startsWith('JT'));
+  const jneShipments = shipments.filter((s) => s.serviceType.includes('JNE') || s.resiNumber.startsWith('JNE'));
 
   const jtCount = jtShipments.length;
   const jtAmount = jtShipments.reduce((acc, curr) => acc + curr.amount, 0);
@@ -32,6 +36,40 @@ export const DashboardSummary: React.FC<DashboardSummaryProps> = ({
 
   return (
     <div className="w-full space-y-3">
+      {/* Header Toolbar: Section Title & Backup/Restore Action Buttons */}
+      <div className="flex flex-wrap items-center justify-between gap-2 pb-0.5">
+        <div className="flex items-center space-x-2">
+          <ReceiptText className="h-4 w-4 text-slate-700" />
+          <h2 className="text-xs font-bold text-slate-900 uppercase tracking-wider">
+            Ringkasan Metrik &amp; Operasional Kas
+          </h2>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          {onExportBackup && (
+            <button
+              onClick={onExportBackup}
+              className="flex items-center space-x-1.5 px-2.5 py-1 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-mono text-[11px] font-bold rounded-[2px] cursor-pointer transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+              title="Unduh cadangan data JSON"
+            >
+              <Download className="h-3.5 w-3.5 text-slate-600" />
+              <span>Backup JSON</span>
+            </button>
+          )}
+
+          {onOpenRestore && (
+            <button
+              onClick={onOpenRestore}
+              className="flex items-center space-x-1.5 px-2.5 py-1 bg-white hover:bg-slate-50 border border-slate-300 text-slate-700 font-mono text-[11px] font-bold rounded-[2px] cursor-pointer transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.04)]"
+              title="Muat file cadangan data JSON"
+            >
+              <Upload className="h-3.5 w-3.5 text-slate-600" />
+              <span>Restore JSON</span>
+            </button>
+          )}
+        </div>
+      </div>
+
       {/* Top 4 Metric Cards */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {/* Card 1: Total Paket */}
