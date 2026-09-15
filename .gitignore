@@ -8,3 +8,4 @@ dist-ssr/
 .env.*
 !.env.example
 tsconfig.tsbuildinfo
+.vercel

@@ -19,8 +19,8 @@ export const DeleteConfirmDialog: React.FC<DeleteConfirmDialogProps> = ({
   if (!isOpen || !entry) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-[2px]">
-      <div className="relative w-full max-w-sm bg-white border border-slate-300 rounded-[3px] p-5 shadow-xl text-slate-900 space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-[2px] animate-backdrop-fade">
+      <div className="relative w-full max-w-sm bg-white border border-slate-300 rounded-[3px] p-5 shadow-xl text-slate-900 space-y-4 animate-modal-pop">
         {/* Header */}
         <div className="flex items-start space-x-3">
           <div className="p-2 rounded-[2px] bg-red-50 border border-red-200 text-red-600 shrink-0">

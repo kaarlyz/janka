@@ -31,25 +31,201 @@ body {
   outline-offset: 2px !important;
 }
 
-/* Micro-interactions: Hover lift 1px + 120ms transition */
+/* ── 1. PAGE VIEW & TAB TRANSITIONS ── */
+@keyframes viewSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-view-slide {
+  animation: viewSlideUp 280ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pill Slide & Spring Indicator on Navigation / Active Tabs */
+.pill-indicator {
+  transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tab-active-pill {
+  position: relative;
+}
+.tab-active-pill::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3.5px;
+  background-color: #38BDF8;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── 2. INTERACTIVE CARD HOVER & MICRO-INTERACTIONS ── */
+/* Card Elevate: subtle scale 1.008 + subtle shadow glow */
+.card-elevate {
+  transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 220ms ease;
+  will-change: transform, box-shadow;
+}
+
+.card-elevate:hover {
+  transform: scale(1.008) translateY(-2px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.09),
+              0 4px 12px -2px rgba(15, 23, 42, 0.05),
+              0 0 0 1px rgba(37, 99, 235, 0.12);
+  border-color: #94A3B8;
+}
+
+/* Table Row Elevation & Hover */
+.row-elevate {
+  transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 160ms ease,
+              box-shadow 160ms ease;
+}
+
+.row-elevate:hover {
+  transform: scale(1.003) translateY(-1px);
+  background-color: #F8FAFC !important;
+  box-shadow: 0 4px 12px -2px rgba(15, 23, 42, 0.06);
+}
+
+/* Button Micro-interactions */
 .btn-hover-lift {
-  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 120ms cubic-bezier(0.16, 1, 0.3, 1), background-color 120ms ease;
+  transition: transform 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 140ms cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 140ms ease;
 }
 .btn-hover-lift:hover {
-  transform: translateY(-1px);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
 }
 .btn-hover-lift:active {
-  transform: translateY(0);
+  transform: translateY(0.5px) scale(0.985);
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.1);
 }
 
-.row-hover-lift {
-  transition: transform 120ms cubic-bezier(0.16, 1, 0.3, 1), background-color 120ms ease;
-}
-.row-hover-lift:hover {
-  transform: translateY(-1px);
+/* Subtle Pulse for Primary Action Buttons */
+@keyframes subtlePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.25);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(15, 23, 42, 0.08);
+  }
 }
 
-/* Skeleton shimmer animation for export & loading states */
+.btn-pulse-subtle {
+  animation: subtlePulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+/* Ripple Click Animation for Primary Buttons */
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+.btn-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 10%, transparent 10.01%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 500ms ease-out, opacity 350ms ease-out;
+}
+.btn-ripple:active::after {
+  transform: translate(-50%, -50%) scale(2.2);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* ── 3. SMOOTH FORM & MODAL ANIMATIONS ── */
+/* Modal Pop-In (scale 0.95 -> 1.0, opacity 0 -> 1 with spring timing) */
+@keyframes modalPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  65% {
+    transform: scale(1.012) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes backdropFadeIn {
+  from { opacity: 0; backdrop-filter: blur(0px); }
+  to { opacity: 1; backdrop-filter: blur(2px); }
+}
+
+.animate-modal-pop {
+  animation: modalPopIn 280ms cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+}
+
+.animate-backdrop-fade {
+  animation: backdropFadeIn 220ms ease-out forwards;
+}
+
+/* Entry Form: Feedback Kilat Hijau/Biru Input */
+@keyframes inputFlashGreen {
+  0% {
+    border-color: #16A34A;
+    box-shadow: 0 0 0 3.5px rgba(22, 163, 74, 0.3);
+    background-color: #F0FDF4;
+  }
+  50% {
+    border-color: #16A34A;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2);
+    background-color: #F0FDF4;
+  }
+  100% {
+    border-color: #CBD5E1;
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    background-color: #FFFFFF;
+  }
+}
+
+@keyframes inputFlashBlue {
+  0% {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.3);
+    background-color: #EFF6FF;
+  }
+  50% {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    background-color: #EFF6FF;
+  }
+  100% {
+    border-color: #CBD5E1;
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    background-color: #FFFFFF;
+  }
+}
+
+.animate-flash-green {
+  animation: inputFlashGreen 850ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-flash-blue {
+  animation: inputFlashBlue 850ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Shimmer & Standard Animations */
 @keyframes skeleton-shimmer {
   0% {
     background-position: -200% 0;
@@ -64,7 +240,6 @@ body {
   animation: skeleton-shimmer 1.4s infinite linear;
 }
 
-/* Micro-animations for smooth tab switching & progress bar fills */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -83,7 +258,6 @@ body {
 .progress-bar-fill {
   transition: width 500ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
 
 /* Crisp technical scrollbars */
 ::-webkit-scrollbar {

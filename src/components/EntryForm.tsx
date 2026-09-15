@@ -136,6 +136,14 @@ export const EntryForm: React.FC<EntryFormProps> = ({
     return autoOngkir;
   }, [isManualAmount, manualAmountStr, autoOngkir]);
 
+  // Flash feedback keys for interactive form input feedback
+  const [flashAmountKey, setFlashAmountKey] = useState<number>(0);
+  const [flashSenderKey, setFlashSenderKey] = useState<number>(0);
+
+  useEffect(() => {
+    setFlashAmountKey((k) => k + 1);
+  }, [effectiveAmount, courier]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setValidationError(null);
@@ -305,6 +313,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
             )}
           </div>
           <input
+            key={`sender-${flashSenderKey}`}
             id="entry-sender-name"
             type="text"
             value={senderName}
@@ -314,7 +323,9 @@ export const EntryForm: React.FC<EntryFormProps> = ({
             }}
             placeholder="Contoh: Gudang Pusat Jakarta / Official Store"
             required
-            className="w-full min-h-[44px] px-3 py-2 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors"
+            className={`w-full min-h-[44px] px-3 py-2 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors ${
+              flashSenderKey > 0 ? 'animate-flash-blue' : ''
+            }`}
           />
 
           {/* Address Book Dropdown */}
@@ -328,6 +339,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
                     setSenderName(item.name);
                     if (item.address) setSenderAddress(item.address);
                     setIsSenderDropdownOpen(false);
+                    setFlashSenderKey((k) => k + 1);
                   }}
                   className="w-full text-left min-h-[44px] px-3 py-2 text-xs hover:bg-[#F8FAFC] transition-colors"
                 >
@@ -426,10 +438,13 @@ export const EntryForm: React.FC<EntryFormProps> = ({
                   value={manualAmountStr}
                   onChange={(e) => setManualAmountStr(e.target.value)}
                   placeholder="Isi biaya manual..."
-                  className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-white border border-[#2563EB] rounded-[2px] text-[#0F172A] focus:outline-none"
+                  className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-white border border-[#2563EB] rounded-[2px] text-[#0F172A] focus:outline-none animate-flash-blue"
                 />
               ) : (
-                <div className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] text-[#0F172A] flex justify-between items-center">
+                <div
+                  key={`amt-${flashAmountKey}`}
+                  className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] text-[#0F172A] flex justify-between items-center animate-flash-green"
+                >
                   <span>{formatRupiah(effectiveAmount)}</span>
                   <span className="text-[10px] text-[#475569] font-normal">Otomatis</span>
                 </div>
@@ -527,7 +542,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-hover-lift min-h-[44px] px-5 py-2 text-xs font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] disabled:bg-[#94A3B8] border border-[#0F172A] rounded-[2px] shadow-sm transition-all duration-[120ms] inline-flex items-center gap-2 cursor-pointer"
+            className="btn-hover-lift btn-ripple btn-pulse-subtle min-h-[44px] px-5 py-2 text-xs font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] disabled:bg-[#94A3B8] border border-[#0F172A] rounded-[2px] shadow-sm transition-all duration-[120ms] inline-flex items-center gap-2 cursor-pointer"
           >
             {editingEntry ? <Edit3 className="w-4 h-4" /> : <Check className="w-4 h-4" />}
             {editingEntry ? 'Simpan Perubahan' : 'Catat Manifest Baru'}

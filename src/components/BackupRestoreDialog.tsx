@@ -83,8 +83,8 @@ export const BackupRestoreDialog: React.FC<BackupRestoreDialogProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-[1px] animate-fade-in">
-      <div className="bg-white border border-slate-300 rounded-[2px] shadow-xl w-full max-w-lg flex flex-col overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-[1px] animate-backdrop-fade">
+      <div className="bg-white border border-slate-300 rounded-[2px] shadow-xl w-full max-w-lg flex flex-col overflow-hidden animate-modal-pop">
         {/* Dialog Header */}
         <div className="bg-slate-900 text-white px-4 py-3 flex items-center justify-between">
           <div className="flex items-center space-x-2">

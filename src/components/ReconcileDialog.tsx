@@ -133,8 +133,8 @@ export const ReconcileDialog: React.FC<ReconcileDialogProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-[2px] overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-white border border-[#D5D9E0] rounded-[3px] p-5 shadow-2xl my-8 text-[#0F172A] space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-[2px] overflow-y-auto animate-backdrop-fade">
+      <div className="relative w-full max-w-lg bg-white border border-[#D5D9E0] rounded-[3px] p-5 shadow-2xl my-8 text-[#0F172A] space-y-4 animate-modal-pop">
         {/* Modal Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#E2E8F0]">
           <div className="flex items-center space-x-2.5">

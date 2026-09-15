@@ -52,8 +52,8 @@ export const PrintLabelDialog: React.FC<PrintLabelDialogProps> = ({
   if (!entry) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-[2px] overflow-y-auto">
-      <div className="relative w-full max-w-lg bg-white border border-[#D5D9E0] rounded-[3px] p-4 sm:p-5 shadow-2xl my-4 text-[#0F172A] max-h-[92vh] flex flex-col justify-between overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/70 backdrop-blur-[2px] overflow-y-auto animate-backdrop-fade">
+      <div className="relative w-full max-w-lg bg-white border border-[#D5D9E0] rounded-[3px] p-4 sm:p-5 shadow-2xl my-4 text-[#0F172A] max-h-[92vh] flex flex-col justify-between overflow-y-auto animate-modal-pop">
         {/* Modal Top Control Bar (Hidden when printing) */}
         <div className="no-print flex items-center justify-between pb-3 border-b border-[#E2E8F0] mb-3">
           <div className="flex items-center space-x-2">

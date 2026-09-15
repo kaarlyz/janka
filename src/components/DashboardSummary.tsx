@@ -532,9 +532,9 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           <button
             type="button"
             onClick={() => setActiveSubTab('overview')}
-            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift pill-indicator min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'overview'
-                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
+                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs tab-active-pill'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
@@ -545,9 +545,9 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           <button
             type="button"
             onClick={() => setActiveSubTab('monthly')}
-            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift pill-indicator min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'monthly'
-                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
+                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs tab-active-pill'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
@@ -558,9 +558,9 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           <button
             type="button"
             onClick={() => setActiveSubTab('breakdown')}
-            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift pill-indicator min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'breakdown'
-                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
+                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs tab-active-pill'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
@@ -571,9 +571,9 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           <button
             type="button"
             onClick={() => setActiveSubTab('digest')}
-            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift pill-indicator min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'digest'
-                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
+                ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs tab-active-pill'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
@@ -585,11 +585,11 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 2. SUB-TAB VIEW 1: RINGKASAN METRIK & TREN ── */}
       {activeSubTab === 'overview' && (
-        <div className="space-y-4 2xl:space-y-6 animate-fade-in">
+        <div key="overview" className="space-y-4 2xl:space-y-6 animate-view-slide">
           {/* Top 4 Metric Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 2xl:gap-5">
             {/* Card 1: Total Manifest */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between text-[#475569] mb-1">
                   <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
@@ -621,7 +621,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 2: Total Kas Keluar */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between text-[#475569] mb-1">
                   <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
@@ -652,7 +652,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 3: Akumulasi Berat & Efisiensi */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between text-[#475569] mb-1">
                   <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
@@ -675,7 +675,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 4: Rata-Rata Biaya per Kg */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs transition-all flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between text-[#475569] mb-1">
                   <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
@@ -699,7 +699,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
           {/* 14-Day Volume Sparkline Section with Interactive Hover Points */}
           {showSparkline && (
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-2.5">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2 text-[#334155]">
                   <Activity className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
@@ -888,7 +888,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 3. SUB-TAB VIEW 2: REKAP KAS BULANAN (MONTHLY FINANCIAL SUMMARY) ── */}
       {activeSubTab === 'monthly' && (
-        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-fade-in">
+        <div key="monthly" className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-view-slide">
           <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
             <div className="flex items-center gap-2.5">
               <Calendar className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#0F172A]" />
@@ -929,7 +929,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                   {monthlySummary.map((m) => {
                     const monthAvgPkg = m.totalCount > 0 ? Math.round(m.totalAmount / m.totalCount) : 0;
                     return (
-                      <tr key={m.monthKey} className="hover:bg-[#F8FAFC] transition-colors">
+                      <tr key={m.monthKey} className="row-elevate hover:bg-[#F8FAFC] transition-colors">
                         <td className="py-3 px-3.5 font-bold text-[#0F172A] font-mono whitespace-nowrap">
                           {m.monthLabel}
                         </td>
@@ -974,9 +974,9 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 4. SUB-TAB VIEW 3: ALOKASI BEBAN KAS & TOP DISTRIBUTION ── */}
       {activeSubTab === 'breakdown' && (
-        <div className="space-y-6 2xl:space-y-8 animate-fade-in">
+        <div key="breakdown" className="space-y-6 2xl:space-y-8 animate-view-slide">
           {/* Section A: Alokasi Beban Kas Reguler vs DFOD */}
-          <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4">
+          <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4">
             <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
               <div className="flex items-center gap-2.5">
                 <Layers className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#0F172A]" />
@@ -1057,7 +1057,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           {/* Section B: Top Senders & Top Destinations Split */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 2xl:gap-6">
             {/* Top Senders List */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
               <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
                 <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-2">
                   <UserCheck className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
@@ -1093,7 +1093,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Top Destination Cities */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+            <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
               <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
                 <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-2">
                   <MapPin className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
@@ -1133,7 +1133,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 5. SUB-TAB VIEW 4: QUICK REPORT DIGEST FOR WA / MEMO ── */}
       {activeSubTab === 'digest' && (
-        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-fade-in">
+        <div key="digest" className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-view-slide">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] pb-3">
             <div className="flex items-center gap-2.5">
               <Sparkles className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#F59E0B]" />

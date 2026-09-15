@@ -53,8 +53,8 @@ export const RateSettingsDialog: React.FC<RateSettingsDialogProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-[2px]">
-      <div className="relative w-full max-w-md bg-white border border-slate-300 rounded-[3px] p-5 shadow-xl text-slate-900 space-y-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-[2px] animate-backdrop-fade">
+      <div className="relative w-full max-w-md bg-white border border-slate-300 rounded-[3px] p-5 shadow-xl text-slate-900 space-y-4 animate-modal-pop">
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-slate-200">
           <div className="flex items-center space-x-2">

@@ -386,9 +386,9 @@ export default function App() {
                       setActiveTab(item.id);
                       setIsMobileMenuOpen(false);
                     }}
-                    className={`w-full min-h-[44px] p-3 rounded-[2px] flex items-center justify-between gap-3 text-left transition-colors border ${
+                    className={`w-full min-h-[44px] p-3 rounded-[2px] flex items-center justify-between gap-3 text-left transition-colors border pill-indicator ${
                       isActive
-                        ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs'
+                        ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs tab-active-pill'
                         : 'bg-white text-[#334155] hover:bg-[#F8FAFC] border-transparent hover:border-[#CBD5E1]'
                     }`}
                   >
@@ -463,9 +463,9 @@ export default function App() {
                 key={item.id}
                 type="button"
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full min-h-[36px] 2xl:min-h-[38px] p-2 2xl:p-2.5 rounded-[2px] flex items-center justify-between gap-2.5 text-left transition-all border ${
+                className={`w-full min-h-[36px] 2xl:min-h-[38px] p-2 2xl:p-2.5 rounded-[2px] flex items-center justify-between gap-2.5 text-left transition-all border pill-indicator ${
                   isActive
-                    ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs'
+                    ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs tab-active-pill'
                     : 'bg-white text-[#334155] hover:bg-[#F8FAFC] border-transparent hover:border-[#CBD5E1]'
                 }`}
               >
@@ -520,7 +520,7 @@ export default function App() {
         <main className="p-4 sm:p-6 lg:p-8 space-y-6 2xl:space-y-8 max-w-[1600px] 2xl:max-w-[1720px] w-full mx-auto pb-16 lg:pb-8">
           {/* VIEW A: 📊 DASHBOARD & ANALYTICS */}
           {activeTab === 'dashboard' && (
-            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
+            <div key="dashboard" className="space-y-6 2xl:space-y-8 animate-view-slide">
               {/* Header */}
               <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -542,7 +542,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift btn-ripple btn-pulse-subtle min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
                     <PlusCircle className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>+ Input Manifest Baru</span>
@@ -571,7 +571,7 @@ export default function App() {
 
               {/* Quick Action Navigation Cards */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-6">
-                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
                     <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
                       <FilePlus className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
@@ -584,14 +584,14 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="btn-hover-lift mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Ke Stasiun Input</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
                     <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
                       <BookOpen className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
@@ -604,14 +604,14 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="btn-hover-lift mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Lihat Ledger ({shipments.length} Data)</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
                     <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
                       <Settings className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
@@ -624,7 +624,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('settings')}
-                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="btn-hover-lift mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Buka Alat &amp; Pengaturan</span>
                     <ArrowRight className="w-4 h-4" />
@@ -633,7 +633,7 @@ export default function App() {
               </div>
 
               {/* Pratinjau Manifest Terbaru (Recent 5 Entries) */}
-              <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+              <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
                 <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
                   <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A] flex items-center gap-2">
                     <Clock className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
@@ -713,7 +713,7 @@ export default function App() {
 
           {/* VIEW B: 📝 INPUT MANIFEST PAKET */}
           {activeTab === 'input' && (
-            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
+            <div key="input" className="space-y-6 2xl:space-y-8 animate-view-slide">
               {/* Header */}
               <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -775,7 +775,7 @@ export default function App() {
                 {/* Secondary Information & Recent Logged Entries (Lg: 4-5 cols) */}
                 <div className="lg:col-span-5 xl:col-span-4 min-w-0 space-y-4 2xl:space-y-6">
                   {/* Operational Quick Guide */}
-                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
+                  <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
                     <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-[#0F172A] font-mono border-b border-[#E2E8F0] pb-2 2xl:pb-3 flex items-center gap-1.5">
                       <CheckCircle2 className="w-4 2xl:w-5 h-4 2xl:h-5 text-[#16A34A]" />
                       Petunjuk Cepat Pencatatan
@@ -797,7 +797,7 @@ export default function App() {
                   </div>
 
                   {/* Recent Logged Entries */}
-                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
+                  <div className="card-elevate bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
                     <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2 2xl:pb-3">
                       <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-[#0F172A] font-mono flex items-center gap-1.5">
                         <Clock className="w-4 2xl:w-5 h-4 2xl:h-5 text-[#2563EB]" />
@@ -867,7 +867,7 @@ export default function App() {
 
           {/* VIEW C: 📖 BUKU LEDGER / DATA MANIFEST */}
           {activeTab === 'ledger' && (
-            <div className="space-y-5 2xl:space-y-7 animate-fade-in">
+            <div key="ledger" className="space-y-5 2xl:space-y-7 animate-view-slide">
               {/* Header */}
               <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
@@ -890,7 +890,7 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift btn-ripple btn-pulse-subtle min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
                     <PlusCircle className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>+ Tambah Manifest Baru</span>
@@ -928,7 +928,7 @@ export default function App() {
 
           {/* VIEW D: ⚙️ PENGATURAN & ALAT */}
           {activeTab === 'settings' && (
-            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
+            <div key="settings" className="space-y-6 2xl:space-y-8 animate-view-slide">
               {/* Header */}
               <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs">
                 <div className="flex items-center gap-2">
@@ -949,7 +949,7 @@ export default function App() {
               {/* Grid 4 Tool Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 2xl:gap-7 3xl:gap-8">
                 {/* Panel 1: Tarif Dasar Kurir */}
-                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
                   <div className="space-y-3 2xl:space-y-4">
                     <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
                       <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
@@ -988,7 +988,7 @@ export default function App() {
                 </div>
 
                 {/* Panel 2: Rekonsiliasi Malam J&T */}
-                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
                   <div className="space-y-3 2xl:space-y-4">
                     <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
                       <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
@@ -1016,7 +1016,7 @@ export default function App() {
                 </div>
 
                 {/* Panel 3: Backup & Pemulihan Data JSON */}
-                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
                   <div className="space-y-3 2xl:space-y-4">
                     <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
                       <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
@@ -1054,7 +1054,7 @@ export default function App() {
                 </div>
 
                 {/* Panel 4: Ekspor Laporan Excel & CSV */}
-                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                <div className="card-elevate bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
                   <div className="space-y-3 2xl:space-y-4">
                     <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
                       <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">

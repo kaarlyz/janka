@@ -203,7 +203,7 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
                 return (
                   <tr
                     key={entry.id}
-                    className="row-hover-lift hover:bg-[#F8FAFC] transition-all duration-[120ms] group text-[#0F172A]"
+                    className="row-elevate row-hover-lift hover:bg-[#F8FAFC] transition-all duration-[120ms] group text-[#0F172A]"
                   >
                     {/* Index */}
                     <td className="py-2.5 2xl:py-3.5 px-2 2xl:px-3 text-center text-[#475569] font-mono text-[10px] 2xl:text-xs">{idx + 1}</td>
