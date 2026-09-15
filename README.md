@@ -1,11 +1,19 @@
 # JANKA — Petty Cash & Manifest Logistik
 
+![Stack](https://img.shields.io/badge/react-18-61DAFB?logo=react&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-5-646CFF?logo=vite&logoColor=white)
+![Tailwind](https://img.shields.io/badge/tailwind-3-06B6D4?logo=tailwindcss&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-5-3178C6?logo=typescript&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 JANKA adalah aplikasi web untuk operasional petty cash pengiriman paket harian:
 mencatat manifest, mencetak resi thermal, merekonsiliasi laporan kurir, dan
 menghasilkan arsip Excel yang siap audit.
 
 Dibangun untuk counter/gudang yang memproses puluhan paket per hari dan butuh
 catatan kas yang rapi tanpa software akuntansi yang berat.
+
+![Dashboard Janka](docs/screenshot-dashboard.png)
 
 ---
 
@@ -88,6 +96,20 @@ src/
   lib/formatters.ts     # Rupiah, tanggal, resi
   types.ts              # model ShipmentEntry
 test_logic.mjs          # self-test tanpa runner
+```
+
+## Alur data
+
+```mermaid
+flowchart LR
+    A[EntryForm] --> B[useShipments]
+    B --> C[(localStorage)]
+    B --> D[LedgerTable + Dashboard]
+    B --> E[PrintLabelDialog]
+    F[XLSX kurir] --> G[ReconcileDialog]
+    G --> B
+    B --> H[lib/excel.ts]
+    H --> I[(Petty Cash .xlsx)]
 ```
 
 ## Data & privasi
