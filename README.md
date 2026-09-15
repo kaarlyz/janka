@@ -10,7 +10,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-MIT-16A34A?style=flat-square)](LICENSE)
 
-*A Enterprise-Grade, Lightweight Logistics Ledger & Thermal Label Printing Workstation*
+*An Enterprise-Grade, Lightweight Logistics Ledger & Thermal Label Printing Workstation*
 
 [Fitur Utama](#-fitur-unggulan) • [Alur Kerja](#-alur-kerja-operasional-harian) • [Tangkapan Layar](#-tangkapan-layar-sistem) • [Spesifikasi Excel](#-spesifikasi-ekspor-excel) • [Panduan Dev](#-panduan-pengembangan-lokal)
 
@@ -26,20 +26,28 @@
 
 ## 🖼️ Tangkapan Layar Sistem
 
-### 📊 1. Dashboard & Analytics Operasional
-> *Pusat pengawasan metrik kas, sparkline tren volume 14 hari, alokasi pengiriman per kurir, serta rekapitulasi bulanan.*
+<div align="center">
 
-![Dashboard Analytics](./docs/screenshot-dashboard.png)
+### 📊 1. Dashboard & Analytics Operasional
+*Pusat pengawasan metrik kas, sparkline tren volume 14 hari, alokasi pengiriman per kurir, serta rekapitulasi bulanan.*
+
+<img src="./docs/screenshot-dashboard.png" alt="Dashboard Analytics" width="92%" style="border-radius:6px;" />
+
+<br/><br/>
 
 ### 📝 2. Stasiun Input Manifest & Cetak Label
-> *Formulir pencatatan ekspres dengan fitur kalkulasi otomatis tarif, notifikasi WhatsApp pengirim, dan modal pratinjau cetak label thermal 100x150mm.*
+*Formulir pencatatan ekspres dengan fitur kalkulasi otomatis tarif, notifikasi WhatsApp pengirim, dan modal pratinjau cetak label thermal 100x150mm.*
 
-![Input Manifest Station](./docs/screenshot-input.png)
+<img src="./docs/screenshot-input.png" alt="Input Manifest Station" width="92%" style="border-radius:6px;" />
+
+<br/><br/>
 
 ### 📖 3. Buku Ledger & Pencarian Manifest
-> *Tabel arsip manifest berukuran penuh dengan filter rentang tanggal, filter kurir, pencarian resi/pengirim, dan ekspor data Excel.*
+*Tabel arsip manifest berukuran penuh dengan filter rentang tanggal, filter kurir, pencarian resi/pengirim, dan ekspor data Excel.*
 
-![Buku Ledger Table](./docs/screenshot-ledger.png)
+<img src="./docs/screenshot-ledger.png" alt="Buku Ledger Table" width="92%" style="border-radius:6px;" />
+
+</div>
 
 ---
 
