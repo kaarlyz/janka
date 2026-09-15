@@ -19,14 +19,17 @@ catatan kas yang rapi tanpa software akuntansi yang berat.
 
 ## Daftar Isi
 
-- [Fitur](#fitur)
-- [Alur kerja harian](#alur-kerja-harian)
-- [Format Excel](#format-excel)
-- [Tarif](#tarif)
-- [Menjalankan lokal](#menjalankan-lokal)
-- [Struktur proyek](#struktur-proyek)
-- [Data & privasi](#data--privasi)
-- [Stack](#stack)
+| Bagian | Isi |
+| ------ | --- |
+| [Fitur](#fitur) | 8 kemampuan utama app |
+| [Alur kerja harian](#alur-kerja-harian) | Rutinitas pagi → malam |
+| [Format Excel](#format-excel) | Spek 6 kolom + sheet bulanan |
+| [Tarif](#tarif) | Tabel Rp/kg per kurir |
+| [Menjalankan lokal](#menjalankan-lokal) | Dev, build, self-test |
+| [Struktur proyek](#struktur-proyek) | Peta folder src/ |
+| [Alur data](#alur-data) | Diagram aliran data |
+| [Data & privasi](#data--privasi) | Penyimpanan lokal |
+| [Stack](#stack) | Teknologi yang dipakai |
 
 ## Fitur
 
