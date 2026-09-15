@@ -484,31 +484,31 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
   };
 
   return (
-    <div className="w-full space-y-2.5 2xl:space-y-3">
+    <div className="w-full space-y-4 2xl:space-y-6">
       {/* ── 1. HEADER TOOLBAR: TITLE, ACTION BUTTONS & SUB-TABS ── */}
-      <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs space-y-1.5 2xl:space-y-2">
-        <div className="flex flex-wrap items-center justify-between gap-2 pb-1.5 border-b border-[#E2E8F0]">
-          <div className="flex items-center space-x-2">
-            <ReceiptText className="h-4 w-4 text-[#0F172A]" />
+      <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3 2xl:space-y-4">
+        <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-[#E2E8F0]">
+          <div className="flex items-center gap-2.5">
+            <ReceiptText className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#0F172A]" />
             <div>
-              <h2 className="text-xs font-bold text-[#0F172A] uppercase tracking-wider font-mono">
+              <h2 className="text-base 2xl:text-xl font-bold text-[#0F172A] uppercase tracking-wider font-mono">
                 Laporan Analytics Operasional Kas &amp; Manifest
               </h2>
-              <p className="text-[10px] text-[#475569]">
+              <p className="text-xs 2xl:text-sm text-[#475569] mt-0.5">
                 Ringkasan Real-time, Buku Rekap Kas Bulanan, dan Distribusi Pengiriman
               </p>
             </div>
           </div>
 
-          <div className="flex items-center space-x-1.5">
+          <div className="flex items-center gap-2">
             {onExportBackup && (
               <button
                 type="button"
                 onClick={onExportBackup}
-                className="btn-hover-lift flex items-center space-x-1 px-2 py-0.5 bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#334155] font-mono text-[10px] font-bold rounded-[2px] cursor-pointer shadow-2xs"
+                className="btn-hover-lift flex items-center gap-1.5 min-h-[34px] 2xl:min-h-[38px] px-3 py-1.5 bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#334155] font-mono text-xs 2xl:text-sm font-bold rounded-[2px] cursor-pointer shadow-2xs"
                 title="Unduh cadangan data JSON"
               >
-                <Download className="h-3 w-3 text-[#475569]" />
+                <Download className="h-4 w-4 text-[#475569]" />
                 <span>Backup JSON</span>
               </button>
             )}
@@ -517,10 +517,10 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
               <button
                 type="button"
                 onClick={onOpenRestore}
-                className="btn-hover-lift flex items-center space-x-1 px-2 py-0.5 bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#334155] font-mono text-[10px] font-bold rounded-[2px] cursor-pointer shadow-2xs"
+                className="btn-hover-lift flex items-center gap-1.5 min-h-[34px] 2xl:min-h-[38px] px-3 py-1.5 bg-white hover:bg-[#F8FAFC] border border-[#CBD5E1] text-[#334155] font-mono text-xs 2xl:text-sm font-bold rounded-[2px] cursor-pointer shadow-2xs"
                 title="Muat file cadangan data JSON"
               >
-                <Upload className="h-3 w-3 text-[#475569]" />
+                <Upload className="h-4 w-4 text-[#475569]" />
                 <span>Restore JSON</span>
               </button>
             )}
@@ -528,56 +528,56 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
         </div>
 
         {/* Sub-Tab Navigation Bar */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-0.5">
+        <div className="flex items-center gap-2 overflow-x-auto pb-1">
           <button
             type="button"
             onClick={() => setActiveSubTab('overview')}
-            className={`btn-hover-lift min-h-[28px] 2xl:min-h-[30px] px-2.5 py-1 text-[11px] font-semibold font-mono rounded-[2px] flex items-center gap-1.5 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'overview'
                 ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
-            <Activity className="w-3.5 h-3.5" />
+            <Activity className="w-4 h-4 2xl:w-4.5 2xl:h-4.5" />
             <span>Ringkasan Metrik</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveSubTab('monthly')}
-            className={`btn-hover-lift min-h-[28px] 2xl:min-h-[30px] px-2.5 py-1 text-[11px] font-semibold font-mono rounded-[2px] flex items-center gap-1.5 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'monthly'
                 ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
-            <Calendar className="w-3.5 h-3.5" />
+            <Calendar className="w-4 h-4 2xl:w-4.5 2xl:h-4.5" />
             <span>Rekap Kas Bulanan ({monthlySummary.length})</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveSubTab('breakdown')}
-            className={`btn-hover-lift min-h-[28px] 2xl:min-h-[30px] px-2.5 py-1 text-[11px] font-semibold font-mono rounded-[2px] flex items-center gap-1.5 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'breakdown'
                 ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
-            <PieChart className="w-3.5 h-3.5" />
+            <PieChart className="w-4 h-4 2xl:w-4.5 2xl:h-4.5" />
             <span>Alokasi Beban &amp; Top Pengirim</span>
           </button>
 
           <button
             type="button"
             onClick={() => setActiveSubTab('digest')}
-            className={`btn-hover-lift min-h-[28px] 2xl:min-h-[30px] px-2.5 py-1 text-[11px] font-semibold font-mono rounded-[2px] flex items-center gap-1.5 border transition-all whitespace-nowrap ${
+            className={`btn-hover-lift min-h-[38px] 2xl:min-h-[42px] px-3.5 2xl:px-4 py-2 text-xs 2xl:text-sm font-semibold font-mono rounded-[2px] flex items-center gap-2 border transition-all whitespace-nowrap ${
               activeSubTab === 'digest'
                 ? 'bg-[#0F172A] text-white border-[#0F172A] shadow-2xs'
                 : 'bg-[#F8FAFC] text-[#334155] hover:bg-[#F1F5F9] border-[#CBD5E1]'
             }`}
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#F59E0B]" />
+            <Sparkles className="w-4 h-4 2xl:w-4.5 2xl:h-4.5 text-[#F59E0B]" />
             <span>Quick Digest (WA / Memo)</span>
           </button>
         </div>
@@ -585,26 +585,26 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 2. SUB-TAB VIEW 1: RINGKASAN METRIK & TREN ── */}
       {activeSubTab === 'overview' && (
-        <div className="space-y-2.5 2xl:space-y-3 animate-fade-in">
+        <div className="space-y-4 2xl:space-y-6 animate-fade-in">
           {/* Top 4 Metric Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 2xl:gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 2xl:gap-5">
             {/* Card 1: Total Manifest */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-[#475569] mb-0.5">
-                  <span className="text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wider font-mono">
+                <div className="flex items-center justify-between text-[#475569] mb-1">
+                  <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
                     Total Manifest
                   </span>
-                  <Package className="h-3.5 w-3.5 text-[#334155]" />
+                  <Package className="h-4 w-4 2xl:h-5 2xl:w-5 text-[#334155]" />
                 </div>
-                <div className="flex items-baseline space-x-1">
-                  <span className="font-mono text-base 2xl:text-xl font-bold text-[#0F172A] tabular-nums">
+                <div className="flex items-baseline space-x-1.5">
+                  <span className="font-mono text-2xl 2xl:text-3xl font-bold text-[#0F172A] tabular-nums">
                     <CountUpNumber value={totalShipments} />
                   </span>
-                  <span className="text-[11px] 2xl:text-xs text-[#475569] font-medium">paket</span>
+                  <span className="text-xs 2xl:text-sm text-[#475569] font-medium">paket</span>
                 </div>
               </div>
-              <div className="mt-1 pt-1 border-t border-[#F1F5F9] flex items-center justify-between text-[10px]">
+              <div className="mt-2 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-xs 2xl:text-sm">
                 <span className="text-[#475569]">vs kemarin:</span>
                 <span
                   className={`font-mono font-bold ${
@@ -621,21 +621,21 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 2: Total Kas Keluar */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-[#475569] mb-0.5">
-                  <span className="text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wider font-mono">
+                <div className="flex items-center justify-between text-[#475569] mb-1">
+                  <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
                     Total Kas Keluar
                   </span>
-                  <ReceiptText className="h-3.5 w-3.5 text-[#334155]" />
+                  <ReceiptText className="h-4 w-4 2xl:h-5 2xl:w-5 text-[#334155]" />
                 </div>
-                <div className="flex items-baseline space-x-1">
-                  <span className="font-mono text-base 2xl:text-xl font-bold text-[#0F172A] tabular-nums">
+                <div className="flex items-baseline space-x-1.5">
+                  <span className="font-mono text-2xl 2xl:text-3xl font-bold text-[#0F172A] tabular-nums">
                     <CountUpNumber value={totalAmount} formatter={formatRupiah} />
                   </span>
                 </div>
               </div>
-              <div className="mt-1 pt-1 border-t border-[#F1F5F9] flex items-center justify-between text-[10px]">
+              <div className="mt-2 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-xs 2xl:text-sm">
                 <span className="text-[#475569]">vs kemarin:</span>
                 <span
                   className={`font-mono font-bold ${
@@ -652,21 +652,21 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 3: Akumulasi Berat & Efisiensi */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-[#475569] mb-0.5">
-                  <span className="text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wider font-mono">
+                <div className="flex items-center justify-between text-[#475569] mb-1">
+                  <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
                     Akumulasi Berat
                   </span>
-                  <Scale className="h-3.5 w-3.5 text-[#334155]" />
+                  <Scale className="h-4 w-4 2xl:h-5 2xl:w-5 text-[#334155]" />
                 </div>
-                <div className="flex items-baseline space-x-1">
-                  <span className="font-mono text-base 2xl:text-xl font-bold text-[#0F172A] tabular-nums">
+                <div className="flex items-baseline space-x-1.5">
+                  <span className="font-mono text-2xl 2xl:text-3xl font-bold text-[#0F172A] tabular-nums">
                     <CountUpNumber value={totalWeight} formatter={formatWeight} />
                   </span>
                 </div>
               </div>
-              <div className="mt-1 pt-1 border-t border-[#F1F5F9] flex items-center justify-between text-[10px]">
+              <div className="mt-2 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-xs 2xl:text-sm">
                 <span className="text-[#475569]">Rata-rata:</span>
                 <span className="font-mono font-bold text-[#0F172A]">
                   {avgWeightPerPkg.toFixed(2)} kg/pkg
@@ -675,22 +675,22 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Card 4: Rata-Rata Biaya per Kg */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs hover:border-[#94A3B8] transition-all flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between text-[#475569] mb-0.5">
-                  <span className="text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wider font-mono">
+                <div className="flex items-center justify-between text-[#475569] mb-1">
+                  <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono">
                     Biaya per Kg
                   </span>
-                  <TrendingUp className="h-3.5 w-3.5 text-[#334155]" />
+                  <TrendingUp className="h-4 w-4 2xl:h-5 2xl:w-5 text-[#334155]" />
                 </div>
-                <div className="flex items-baseline space-x-1">
-                  <span className="font-mono text-base 2xl:text-xl font-bold text-[#0F172A] tabular-nums">
+                <div className="flex items-baseline space-x-1.5">
+                  <span className="font-mono text-2xl 2xl:text-3xl font-bold text-[#0F172A] tabular-nums">
                     <CountUpNumber value={avgCostPerKg} formatter={formatRupiah} />
                   </span>
-                  <span className="text-[11px] 2xl:text-xs text-[#475569] font-medium">/kg</span>
+                  <span className="text-xs 2xl:text-sm text-[#475569] font-medium">/kg</span>
                 </div>
               </div>
-              <div className="mt-1 pt-1 border-t border-[#F1F5F9] flex items-center justify-between text-[10px]">
+              <div className="mt-2 pt-2 border-t border-[#F1F5F9] flex items-center justify-between text-xs 2xl:text-sm">
                 <span className="text-[#475569]">Efisiensi kas</span>
                 <span className="font-mono font-semibold text-[#16A34A]">Optimum</span>
               </div>
@@ -699,24 +699,24 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
           {/* 14-Day Volume Sparkline Section with Interactive Hover Points */}
           {showSparkline && (
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2 2xl:p-2.5 shadow-xs space-y-1">
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-2.5">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-[#334155]">
-                  <Activity className="w-3.5 h-3.5 text-[#0F172A]" />
-                  <span className="text-[10px] 2xl:text-[11px] font-bold uppercase tracking-wider text-[#0F172A] font-mono">
+                <div className="flex items-center gap-2 text-[#334155]">
+                  <Activity className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
+                  <span className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-[#0F172A] font-mono">
                     Tren Volume Manifest (14 Hari Terakhir)
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-[#475569]">
+                  <span className="text-xs 2xl:text-sm font-mono text-[#475569]">
                     Puncak: <strong>{sparklineDetails.maxVal} paket/hari</strong>
                   </span>
                 </div>
               </div>
 
               {/* SVG Sparkline Container with Tooltip */}
-              <div className="relative w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-[2px] p-1.5 2xl:p-2">
-                <div className="w-full h-7 2xl:h-8 flex items-center justify-center relative">
+              <div className="relative w-full bg-[#F8FAFC] border border-[#E2E8F0] rounded-[2px] p-2.5 2xl:p-3">
+                <div className="w-full h-8 2xl:h-10 flex items-center justify-center relative">
                   <svg
                     className="w-full h-full overflow-visible"
                     viewBox="0 0 280 40"
@@ -754,7 +754,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                   {/* Interactive Tooltip on Hover */}
                   {hoveredSparklineIdx !== null && sparklineDetails.points[hoveredSparklineIdx] && (
                     <div
-                      className="absolute z-20 pointer-events-none bg-[#0F172A] text-white text-[10px] font-mono px-2 py-1 rounded-[2px] shadow-md border border-[#334155] -top-9 transition-all animate-fade-in whitespace-nowrap"
+                      className="absolute z-20 pointer-events-none bg-[#0F172A] text-white text-xs font-mono px-2.5 py-1.5 rounded-[2px] shadow-md border border-[#334155] -top-10 transition-all animate-fade-in whitespace-nowrap"
                       style={{
                         left: `${(hoveredSparklineIdx / 13) * 85 + 5}%`,
                         transform: 'translateX(-50%)',
@@ -764,7 +764,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                         {sparklineDetails.points[hoveredSparklineIdx].dateLabel}:{' '}
                         {sparklineDetails.points[hoveredSparklineIdx].count} paket
                       </div>
-                      <div className="text-[9px] text-[#94A3B8]">
+                      <div className="text-[10px] text-[#94A3B8]">
                         {formatRupiah(sparklineDetails.points[hoveredSparklineIdx].amount)} •{' '}
                         {formatWeight(sparklineDetails.points[hoveredSparklineIdx].weight)}
                       </div>
@@ -772,7 +772,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                   )}
                 </div>
 
-                <div className="flex items-center justify-between text-[9px] font-mono text-[#64748B] mt-0.5 pt-0.5 border-t border-[#E2E8F0]">
+                <div className="flex items-center justify-between text-xs 2xl:text-sm font-mono text-[#64748B] mt-1 pt-1 border-t border-[#E2E8F0]">
                   <span>{sparklineDetails.points[0]?.dateLabel}</span>
                   <span>{sparklineDetails.points[6]?.dateLabel}</span>
                   <span>{sparklineDetails.points[13]?.dateLabel}</span>
@@ -782,11 +782,11 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           )}
 
           {/* Courier Breakdown Panel + CSS-only Mini Bar Chart */}
-          <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs space-y-2">
-            <div className="flex items-center justify-between pb-1 border-b border-[#E2E8F0]">
-              <div className="flex items-center space-x-2">
-                <Truck className="h-3.5 w-3.5 text-[#0F172A]" />
-                <h3 className="text-[10px] 2xl:text-[11px] font-bold text-[#0F172A] uppercase tracking-wider font-mono">
+          <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+            <div className="flex items-center justify-between pb-2 border-b border-[#E2E8F0]">
+              <div className="flex items-center gap-2">
+                <Truck className="h-4 w-4 2xl:h-5 2xl:w-5 text-[#0F172A]" />
+                <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A] uppercase tracking-wider font-mono">
                   Breakdown Alokasi Kurir Ekspedisi
                 </h3>
               </div>
@@ -794,7 +794,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                 <button
                   type="button"
                   onClick={onOpenRateSettings}
-                  className="btn-hover-lift text-[10px] 2xl:text-[11px] font-mono text-[#334155] hover:text-[#0F172A] underline cursor-pointer"
+                  className="btn-hover-lift text-xs 2xl:text-sm font-mono text-[#334155] hover:text-[#0F172A] underline cursor-pointer"
                 >
                   Atur Tarif Default
                 </button>
@@ -802,56 +802,56 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Courier Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 2xl:gap-2.5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 2xl:gap-4">
               {/* J&T Breakdown */}
-              <div className="border border-[#CBD5E1] bg-[#F8FAFC] rounded-[2px] p-2 2xl:p-2.5 flex items-center justify-between hover:border-[#94A3B8] transition-all">
-                <div className="space-y-0.5">
+              <div className="border border-[#CBD5E1] bg-[#F8FAFC] rounded-[2px] p-3 2xl:p-4 flex items-center justify-between hover:border-[#94A3B8] transition-all">
+                <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="px-1.5 py-0.5 rounded-[2px] bg-[#0F172A] text-white font-mono text-[10px] font-bold">
+                    <span className="px-2 py-0.5 rounded-[2px] bg-[#0F172A] text-white font-mono text-xs 2xl:text-sm font-bold">
                       J&amp;T Express
                     </span>
-                    <span className="text-[10px] text-[#475569] font-mono">
+                    <span className="text-xs 2xl:text-sm text-[#475569] font-mono">
                       (Tarif: {formatRupiah(rates.JT)}/kg)
                     </span>
                   </div>
-                  <div className="text-[10px] 2xl:text-[11px] text-[#334155]">
+                  <div className="text-xs 2xl:text-sm text-[#334155]">
                     <span className="font-bold">{jtCount} paket</span>
-                    <span className="mx-1 text-[#CBD5E1]">•</span>
+                    <span className="mx-1.5 text-[#CBD5E1]">•</span>
                     <span>{formatWeight(jtWeight)}</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono text-xs 2xl:text-sm font-bold text-[#0F172A] tabular-nums">
+                  <span className="font-mono text-sm 2xl:text-base font-bold text-[#0F172A] tabular-nums">
                     {formatRupiah(jtAmount)}
                   </span>
-                  <span className="block text-[10px] text-[#475569]">
+                  <span className="block text-xs 2xl:text-sm text-[#475569]">
                     {totalAmount > 0 ? `${((jtAmount / totalAmount) * 100).toFixed(0)}% kas` : '0%'}
                   </span>
                 </div>
               </div>
 
               {/* JNE Breakdown */}
-              <div className="border border-[#CBD5E1] bg-[#F8FAFC] rounded-[2px] p-2 2xl:p-2.5 flex items-center justify-between hover:border-[#94A3B8] transition-all">
-                <div className="space-y-0.5">
+              <div className="border border-[#CBD5E1] bg-[#F8FAFC] rounded-[2px] p-3 2xl:p-4 flex items-center justify-between hover:border-[#94A3B8] transition-all">
+                <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="px-1.5 py-0.5 rounded-[2px] bg-[#334155] text-white font-mono text-[10px] font-bold">
+                    <span className="px-2 py-0.5 rounded-[2px] bg-[#334155] text-white font-mono text-xs 2xl:text-sm font-bold">
                       JNE Express
                     </span>
-                    <span className="text-[10px] text-[#475569] font-mono">
+                    <span className="text-xs 2xl:text-sm text-[#475569] font-mono">
                       (Tarif: {formatRupiah(rates.JNE)}/kg)
                     </span>
                   </div>
-                  <div className="text-[10px] 2xl:text-[11px] text-[#334155]">
+                  <div className="text-xs 2xl:text-sm text-[#334155]">
                     <span className="font-bold">{jneCount} paket</span>
-                    <span className="mx-1 text-[#CBD5E1]">•</span>
+                    <span className="mx-1.5 text-[#CBD5E1]">•</span>
                     <span>{formatWeight(jneWeight)}</span>
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="font-mono text-xs 2xl:text-sm font-bold text-[#0F172A] tabular-nums">
+                  <span className="font-mono text-sm 2xl:text-base font-bold text-[#0F172A] tabular-nums">
                     {formatRupiah(jneAmount)}
                   </span>
-                  <span className="block text-[10px] text-[#475569]">
+                  <span className="block text-xs 2xl:text-sm text-[#475569]">
                     {totalAmount > 0 ? `${((jneAmount / totalAmount) * 100).toFixed(0)}% kas` : '0%'}
                   </span>
                 </div>
@@ -859,17 +859,17 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* CSS Bar Chart for Courier Volume */}
-            <div className="bg-[#F1F5F9] border border-[#CBD5E1] p-1.5 2xl:p-2 rounded-[2px] space-y-1">
-              <div className="flex items-center justify-between text-[10px] font-medium text-[#334155]">
-                <span className="font-bold text-[10px] uppercase tracking-wider text-[#0F172A] font-mono">
+            <div className="bg-[#F1F5F9] border border-[#CBD5E1] p-2.5 2xl:p-3 rounded-[2px] space-y-1.5">
+              <div className="flex items-center justify-between text-xs 2xl:text-sm font-medium text-[#334155]">
+                <span className="font-bold text-xs 2xl:text-sm uppercase tracking-wider text-[#0F172A] font-mono">
                   Proporsi Volume Kurir
                 </span>
-                <span className="font-mono text-[10px] text-[#475569]">
+                <span className="font-mono text-xs 2xl:text-sm text-[#475569]">
                   J&amp;T: {jtPercent}% ({jtCount} pkg) | JNE: {jnePercent}% ({jneCount} pkg)
                 </span>
               </div>
 
-              <div className="w-full h-2.5 2xl:h-3 bg-[#E2E8F0] rounded-[2px] overflow-hidden flex border border-[#CBD5E1]">
+              <div className="w-full h-3 2xl:h-3.5 bg-[#E2E8F0] rounded-[2px] overflow-hidden flex border border-[#CBD5E1]">
                 <div
                   style={{ width: `${jtPercent}%` }}
                   className="bg-[#0F172A] h-full progress-bar-fill hover:opacity-90 cursor-pointer"
@@ -888,41 +888,41 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 3. SUB-TAB VIEW 2: REKAP KAS BULANAN (MONTHLY FINANCIAL SUMMARY) ── */}
       {activeSubTab === 'monthly' && (
-        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-3.5 2xl:p-4 shadow-xs space-y-3 animate-fade-in">
-          <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-[#0F172A]" />
+        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-fade-in">
+          <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+            <div className="flex items-center gap-2.5">
+              <Calendar className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#0F172A]" />
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0F172A]">
+                <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A]">
                   Rekapitulasi Bulanan (Monthly Financial &amp; Volume Summary)
                 </h3>
-                <p className="text-[10px] text-[#475569]">
+                <p className="text-xs 2xl:text-sm text-[#475569]">
                   Digunakan untuk pelaporan buku kas operasional per lembar kerja bulanan
                 </p>
               </div>
             </div>
-            <span className="text-[10px] font-mono bg-[#F1F5F9] text-[#334155] border border-[#CBD5E1] px-2 py-0.5 rounded-[2px]">
+            <span className="text-xs 2xl:text-sm font-mono bg-[#F1F5F9] text-[#334155] border border-[#CBD5E1] px-2.5 py-1 rounded-[2px]">
               {monthlySummary.length} Bulan Terdaftar
             </span>
           </div>
 
           {monthlySummary.length === 0 ? (
-            <div className="p-8 text-center text-xs text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
+            <div className="p-8 text-center text-xs 2xl:text-sm text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
               Belum ada data manifest untuk disusun ke rekap bulanan.
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-xs 2xl:text-sm border-collapse">
                 <thead>
-                  <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-[10px] uppercase">
-                    <th className="py-2.5 px-3">Periode Bulan</th>
-                    <th className="py-2.5 px-3 text-right">Volume (Paket)</th>
-                    <th className="py-2.5 px-3 text-right">Berat Total</th>
-                    <th className="py-2.5 px-3 text-right">Total Kas Keluar</th>
-                    <th className="py-2.5 px-3 text-right">J&amp;T (Paket / Rp)</th>
-                    <th className="py-2.5 px-3 text-right">JNE (Paket / Rp)</th>
-                    <th className="py-2.5 px-3 text-right">Reguler vs DFOD</th>
-                    <th className="py-2.5 px-3 text-right">Rata-rata/Pkg</th>
+                  <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-xs 2xl:text-sm uppercase">
+                    <th className="py-3 px-3.5">Periode Bulan</th>
+                    <th className="py-3 px-3.5 text-right">Volume (Paket)</th>
+                    <th className="py-3 px-3.5 text-right">Berat Total</th>
+                    <th className="py-3 px-3.5 text-right">Total Kas Keluar</th>
+                    <th className="py-3 px-3.5 text-right">J&amp;T (Paket / Rp)</th>
+                    <th className="py-3 px-3.5 text-right">JNE (Paket / Rp)</th>
+                    <th className="py-3 px-3.5 text-right">Reguler vs DFOD</th>
+                    <th className="py-3 px-3.5 text-right">Rata-rata/Pkg</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-[#E2E8F0]">
@@ -930,36 +930,36 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
                     const monthAvgPkg = m.totalCount > 0 ? Math.round(m.totalAmount / m.totalCount) : 0;
                     return (
                       <tr key={m.monthKey} className="hover:bg-[#F8FAFC] transition-colors">
-                        <td className="py-3 px-3 font-bold text-[#0F172A] font-mono whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-bold text-[#0F172A] font-mono whitespace-nowrap">
                           {m.monthLabel}
                         </td>
-                        <td className="py-3 px-3 font-mono text-right font-semibold whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right font-semibold whitespace-nowrap">
                           {formatNumber(m.totalCount)} paket
                         </td>
-                        <td className="py-3 px-3 font-mono text-right text-[#334155] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right text-[#334155] whitespace-nowrap">
                           {formatWeight(m.totalWeight)}
                         </td>
-                        <td className="py-3 px-3 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap">
                           {formatRupiah(m.totalAmount)}
                         </td>
-                        <td className="py-3 px-3 font-mono text-right text-[#334155] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right text-[#334155] whitespace-nowrap">
                           <span>{m.jtCount} pkg</span>
-                          <span className="text-[#64748B] text-[10px] block">
+                          <span className="text-[#64748B] text-xs block">
                             {formatRupiah(m.jtAmount)}
                           </span>
                         </td>
-                        <td className="py-3 px-3 font-mono text-right text-[#334155] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right text-[#334155] whitespace-nowrap">
                           <span>{m.jneCount} pkg</span>
-                          <span className="text-[#64748B] text-[10px] block">
+                          <span className="text-[#64748B] text-xs block">
                             {formatRupiah(m.jneAmount)}
                           </span>
                         </td>
-                        <td className="py-3 px-3 font-mono text-right text-[#334155] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right text-[#334155] whitespace-nowrap">
                           <span className="text-[#16A34A] font-medium">Reg: {m.regulerCount}</span>
                           <span className="mx-1 text-[#CBD5E1]">|</span>
                           <span className="text-[#D97706] font-medium">DFOD: {m.dfodCount}</span>
                         </td>
-                        <td className="py-3 px-3 font-mono text-right font-semibold text-[#0F172A] whitespace-nowrap">
+                        <td className="py-3 px-3.5 font-mono text-right font-semibold text-[#0F172A] whitespace-nowrap">
                           {formatRupiah(monthAvgPkg)}
                         </td>
                       </tr>
@@ -974,59 +974,59 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 4. SUB-TAB VIEW 3: ALOKASI BEBAN KAS & TOP DISTRIBUTION ── */}
       {activeSubTab === 'breakdown' && (
-        <div className="space-y-4 animate-fade-in">
+        <div className="space-y-6 2xl:space-y-8 animate-fade-in">
           {/* Section A: Alokasi Beban Kas Reguler vs DFOD */}
-          <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
-              <div className="flex items-center gap-2">
-                <Layers className="w-4.5 h-4.5 text-[#0F172A]" />
+          <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4">
+            <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
+              <div className="flex items-center gap-2.5">
+                <Layers className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#0F172A]" />
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0F172A]">
+                  <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A]">
                     Estimasi &amp; Alokasi Beban Kas (Disbursement Breakdown)
                   </h3>
-                  <p className="text-[10px] text-[#475569]">
+                  <p className="text-xs 2xl:text-sm text-[#475569]">
                     Perbandingan alokasi kas pengeluaran reguler vs pembayaran tujuan (DFOD)
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 2xl:gap-5">
               {/* Reguler Kas */}
-              <div className="border border-[#CBD5E1] bg-[#F8FAFC] p-3 rounded-[2px] space-y-1.5">
+              <div className="border border-[#CBD5E1] bg-[#F8FAFC] p-4 2xl:p-5 rounded-[2px] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#0F172A] font-mono flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#16A34A]" />
+                  <span className="text-xs 2xl:text-sm font-bold text-[#0F172A] font-mono flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#16A34A]" />
                     Kas Reguler (Tunai / Direct)
                   </span>
-                  <span className="text-[10px] font-mono font-bold bg-[#E2E8F0] px-1.5 py-0.5 rounded-[2px]">
+                  <span className="text-xs 2xl:text-sm font-mono font-bold bg-[#E2E8F0] px-2 py-0.5 rounded-[2px]">
                     {disbursementBreakdown.reguler.amountPct}% Kas
                   </span>
                 </div>
-                <div className="text-lg font-mono font-bold text-[#0F172A]">
+                <div className="text-xl 2xl:text-2xl font-mono font-bold text-[#0F172A]">
                   {formatRupiah(disbursementBreakdown.reguler.amount)}
                 </div>
-                <div className="text-[11px] text-[#475569] flex justify-between font-mono">
+                <div className="text-xs 2xl:text-sm text-[#475569] flex justify-between font-mono">
                   <span>{disbursementBreakdown.reguler.count} manifest paket</span>
                   <span>Rata-rata: {formatRupiah(disbursementBreakdown.reguler.avgCost)}/pkg</span>
                 </div>
               </div>
 
               {/* DFOD / Non-Reguler */}
-              <div className="border border-[#CBD5E1] bg-[#F8FAFC] p-3 rounded-[2px] space-y-1.5">
+              <div className="border border-[#CBD5E1] bg-[#F8FAFC] p-4 2xl:p-5 rounded-[2px] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-[#0F172A] font-mono flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-[#D97706]" />
+                  <span className="text-xs 2xl:text-sm font-bold text-[#0F172A] font-mono flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#D97706]" />
                     DFOD / Non-Reguler (Ongkir Tujuan)
                   </span>
-                  <span className="text-[10px] font-mono font-bold bg-[#E2E8F0] px-1.5 py-0.5 rounded-[2px]">
+                  <span className="text-xs 2xl:text-sm font-mono font-bold bg-[#E2E8F0] px-2 py-0.5 rounded-[2px]">
                     {disbursementBreakdown.dfod.amountPct}% Kas
                   </span>
                 </div>
-                <div className="text-lg font-mono font-bold text-[#0F172A]">
+                <div className="text-xl 2xl:text-2xl font-mono font-bold text-[#0F172A]">
                   {formatRupiah(disbursementBreakdown.dfod.amount)}
                 </div>
-                <div className="text-[11px] text-[#475569] flex justify-between font-mono">
+                <div className="text-xs 2xl:text-sm text-[#475569] flex justify-between font-mono">
                   <span>{disbursementBreakdown.dfod.count} manifest paket</span>
                   <span>Rata-rata: {formatRupiah(disbursementBreakdown.dfod.avgCost)}/pkg</span>
                 </div>
@@ -1034,12 +1034,12 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Combined Progress Bar */}
-            <div className="bg-[#F1F5F9] border border-[#CBD5E1] p-2.5 rounded-[2px] space-y-1.5">
-              <div className="flex items-center justify-between text-[10px] font-mono text-[#475569]">
+            <div className="bg-[#F1F5F9] border border-[#CBD5E1] p-3 rounded-[2px] space-y-2">
+              <div className="flex items-center justify-between text-xs 2xl:text-sm font-mono text-[#475569]">
                 <span>Alokasi Kas: Reguler ({disbursementBreakdown.reguler.amountPct}%)</span>
                 <span>DFOD ({disbursementBreakdown.dfod.amountPct}%)</span>
               </div>
-              <div className="w-full h-3 bg-[#E2E8F0] rounded-[2px] overflow-hidden flex border border-[#CBD5E1]">
+              <div className="w-full h-3.5 bg-[#E2E8F0] rounded-[2px] overflow-hidden flex border border-[#CBD5E1]">
                 <div
                   style={{ width: `${disbursementBreakdown.reguler.amountPct}%` }}
                   className="bg-[#16A34A] h-full progress-bar-fill hover:opacity-90 cursor-pointer"
@@ -1055,32 +1055,32 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
           </div>
 
           {/* Section B: Top Senders & Top Destinations Split */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 2xl:gap-6">
             {/* Top Senders List */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-1.5">
-                  <UserCheck className="w-4 h-4 text-[#0F172A]" />
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
+                <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-2">
+                  <UserCheck className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
                   Top 5 Pengirim Terbanyak
                 </h3>
-                <span className="text-[10px] font-mono text-[#64748B]">Volume Paket</span>
+                <span className="text-xs 2xl:text-sm font-mono text-[#64748B]">Volume Paket</span>
               </div>
 
               {topSenders.length === 0 ? (
-                <p className="text-xs text-[#64748B] py-4 text-center">Belum ada data pengirim.</p>
+                <p className="text-xs 2xl:text-sm text-[#64748B] py-4 text-center">Belum ada data pengirim.</p>
               ) : (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {topSenders.map((item, idx) => (
                     <div key={item.name} className="space-y-1">
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="font-semibold text-[#0F172A] truncate max-w-[180px]">
+                      <div className="flex items-center justify-between text-xs 2xl:text-sm font-mono">
+                        <span className="font-semibold text-[#0F172A] truncate max-w-[200px]">
                           {idx + 1}. {item.name}
                         </span>
-                        <span className="text-[#475569] text-[11px]">
+                        <span className="text-[#475569]">
                           <strong>{item.count} paket</strong> ({formatRupiah(item.amount)})
                         </span>
                       </div>
-                      <div className="w-full h-2 bg-[#F1F5F9] rounded-[2px] overflow-hidden border border-[#E2E8F0]">
+                      <div className="w-full h-2.5 bg-[#F1F5F9] rounded-[2px] overflow-hidden border border-[#E2E8F0]">
                         <div
                           style={{ width: `${item.percent}%` }}
                           className="bg-[#0F172A] h-full progress-bar-fill"
@@ -1093,30 +1093,30 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             </div>
 
             {/* Top Destination Cities */}
-            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-1.5">
-                  <MapPin className="w-4 h-4 text-[#0F172A]" />
+            <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+              <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
+                <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A] flex items-center gap-2">
+                  <MapPin className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#0F172A]" />
                   Top 5 Destinasi Pengiriman
                 </h3>
-                <span className="text-[10px] font-mono text-[#64748B]">Sebaran Kota</span>
+                <span className="text-xs 2xl:text-sm font-mono text-[#64748B]">Sebaran Kota</span>
               </div>
 
               {topDestinations.length === 0 ? (
-                <p className="text-xs text-[#64748B] py-4 text-center">Belum ada data destinasi.</p>
+                <p className="text-xs 2xl:text-sm text-[#64748B] py-4 text-center">Belum ada data destinasi.</p>
               ) : (
-                <div className="space-y-2.5">
+                <div className="space-y-3">
                   {topDestinations.map((item, idx) => (
                     <div key={item.city} className="space-y-1">
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="font-semibold text-[#0F172A] truncate max-w-[180px]">
+                      <div className="flex items-center justify-between text-xs 2xl:text-sm font-mono">
+                        <span className="font-semibold text-[#0F172A] truncate max-w-[200px]">
                           {idx + 1}. {item.city}
                         </span>
-                        <span className="text-[#475569] text-[11px]">
+                        <span className="text-[#475569]">
                           <strong>{item.count} paket</strong> ({formatWeight(item.weight)})
                         </span>
                       </div>
-                      <div className="w-full h-2 bg-[#F1F5F9] rounded-[2px] overflow-hidden border border-[#E2E8F0]">
+                      <div className="w-full h-2.5 bg-[#F1F5F9] rounded-[2px] overflow-hidden border border-[#E2E8F0]">
                         <div
                           style={{ width: `${item.percent}%` }}
                           className="bg-[#475569] h-full progress-bar-fill"
@@ -1133,15 +1133,15 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
 
       {/* ── 5. SUB-TAB VIEW 4: QUICK REPORT DIGEST FOR WA / MEMO ── */}
       {activeSubTab === 'digest' && (
-        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-4 animate-fade-in">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2E8F0] pb-3">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-4.5 h-4.5 text-[#F59E0B]" />
+        <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-4 animate-fade-in">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2E8F0] pb-3">
+            <div className="flex items-center gap-2.5">
+              <Sparkles className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#F59E0B]" />
               <div>
-                <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0F172A]">
+                <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider font-mono text-[#0F172A]">
                   Quick Executive Digest / Ringkasan Laporan Ready-to-Copy
                 </h3>
-                <p className="text-[10px] text-[#475569]">
+                <p className="text-xs 2xl:text-sm text-[#475569]">
                   Ringkasan siap salin untuk pesan WhatsApp grup operasional atau Memo Direksi
                 </p>
               </div>
@@ -1150,7 +1150,7 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
             <button
               type="button"
               onClick={handleCopyDigest}
-              className="btn-hover-lift flex items-center space-x-2 px-4 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white font-mono text-xs font-bold rounded-[2px] cursor-pointer shadow-xs"
+              className="btn-hover-lift flex items-center space-x-2 min-h-[38px] 2xl:min-h-[42px] px-4 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white font-mono text-xs 2xl:text-sm font-bold rounded-[2px] cursor-pointer shadow-xs"
             >
               {copiedDigest ? (
                 <>
@@ -1171,11 +1171,11 @@ _Laporan disiapkan secara otomatis oleh Janka Logistics Ledger System_`;
               readOnly
               rows={16}
               value={quickDigestText}
-              className="w-full p-3.5 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[2px] font-mono text-xs text-[#0F172A] leading-relaxed focus:outline-none resize-y"
+              className="w-full p-4 bg-[#F8FAFC] border border-[#CBD5E1] rounded-[2px] font-mono text-xs 2xl:text-sm text-[#0F172A] leading-relaxed focus:outline-none resize-y"
             />
           </div>
 
-          <div className="flex items-center justify-between text-[11px] text-[#64748B] font-mono pt-1">
+          <div className="flex items-center justify-between text-xs 2xl:text-sm text-[#64748B] font-mono pt-1">
             <span>Format: Markdown WhatsApp (*bold*, list bullet)</span>
             <span>Total karakter: {quickDigestText.length} char</span>
           </div>

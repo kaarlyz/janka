@@ -517,42 +517,42 @@ export default function App() {
         )}
 
         {/* Active Page View Switcher */}
-        <main className="p-3 sm:p-4 lg:p-4.5 2xl:p-5 space-y-3 2xl:space-y-3.5 max-w-[1440px] 2xl:max-w-[1500px] w-full mx-auto pb-16 lg:pb-8">
+        <main className="p-4 sm:p-6 lg:p-8 space-y-6 2xl:space-y-8 max-w-[1600px] 2xl:max-w-[1720px] w-full mx-auto pb-16 lg:pb-8">
           {/* VIEW A: 📊 DASHBOARD & ANALYTICS */}
           {activeTab === 'dashboard' && (
-            <div className="space-y-3 2xl:space-y-3.5 animate-fade-in">
+            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
               {/* Header */}
-              <div className="bg-white border border-[#D5D9E0] p-2.5 sm:p-3 2xl:p-3.5 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2.5">
+              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase bg-[#E2E8F0] text-[#334155] px-2 py-0.5 rounded-[2px] font-semibold">
+                    <span className="text-[10px] 2xl:text-xs font-mono uppercase bg-[#E2E8F0] text-[#334155] px-2 py-0.5 rounded-[2px] font-semibold">
                       DASHBOARD METRICS
                     </span>
-                    <span className="text-[11px] text-[#64748B]">Real-time Overview</span>
+                    <span className="text-xs 2xl:text-sm text-[#64748B]">Real-time Overview</span>
                   </div>
-                  <h1 className="text-base 2xl:text-lg font-bold text-[#0F172A] mt-0.5 flex items-center gap-1.5">
-                    <LayoutDashboard className="w-4 h-4 2xl:w-4.5 2xl:h-4.5 text-[#2563EB]" />
+                  <h1 className="text-base 2xl:text-xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
+                    <LayoutDashboard className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                     Dashboard &amp; Analytics Operasional
                   </h1>
-                  <p className="text-[11px] 2xl:text-xs text-[#475569] mt-0.5">
+                  <p className="text-xs 2xl:text-sm text-[#475569] mt-0.5 2xl:mt-1">
                     Ringkasan statistik manifest, total pengeluaran kas reguler, performa ekspedisi J&amp;T vs JNE, dan tren harian.
                   </p>
                 </div>
-                <div className="flex items-center gap-2 flex-wrap">
+                <div className="flex items-center gap-2 2xl:gap-3 flex-wrap">
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="btn-hover-lift min-h-[32px] 2xl:min-h-[34px] px-3 2xl:px-3.5 py-1.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-[2px] flex items-center gap-1.5 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
-                    <PlusCircle className="w-3.5 h-3.5" />
+                    <PlusCircle className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>+ Input Manifest Baru</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="btn-hover-lift min-h-[32px] 2xl:min-h-[34px] px-3 2xl:px-3.5 py-1.5 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold rounded-[2px] flex items-center gap-1.5 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
-                    <BookOpen className="w-3.5 h-3.5" />
+                    <BookOpen className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>Buka Buku Ledger</span>
                   </button>
                 </div>
@@ -570,134 +570,134 @@ export default function App() {
               </section>
 
               {/* Quick Action Navigation Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 2xl:gap-3">
-                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-6">
+                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
-                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
-                      <FilePlus className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
+                      <FilePlus className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Stasiun Input Manifest</h3>
-                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                    <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A]">Stasiun Input Manifest</h3>
+                    <p className="text-xs 2xl:text-sm text-[#64748B] mt-1 leading-snug">
                       Catat paket baru, hitung ongkir otomatis J&amp;T &amp; JNE, dan cetak label thermal 100x150mm secara langsung.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
+                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Ke Stasiun Input</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
+                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
-                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
-                      <BookOpen className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
+                      <BookOpen className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Buku Ledger Data Paket</h3>
-                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                    <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A]">Buku Ledger Data Paket</h3>
+                    <p className="text-xs 2xl:text-sm text-[#64748B] mt-1 leading-snug">
                       Pencarian resi, filter tanggal &amp; kurir, audit data kas operasional, serta ekspor Excel 6-kolom (.xlsx).
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
+                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Lihat Ledger ({shipments.length} Data)</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
+                <div className="bg-white border border-[#D5D9E0] p-4 2xl:p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-3">
                   <div>
-                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
-                      <Settings className="w-3.5 h-3.5 text-[#2563EB]" />
+                    <div className="w-8 h-8 2xl:w-9 2xl:h-9 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-2 border border-[#CBD5E1]">
+                      <Settings className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Pengaturan &amp; Alat Audit</h3>
-                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                    <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A]">Pengaturan &amp; Alat Audit</h3>
+                    <p className="text-xs 2xl:text-sm text-[#64748B] mt-1 leading-snug">
                       Kelola tarif kurir, jalankan rekonsiliasi resi J&amp;T malam hari, dan backup/restore data JSON.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('settings')}
-                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
+                    className="mt-3 min-h-[38px] 2xl:min-h-[42px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
                   >
                     <span>Buka Alat &amp; Pengaturan</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
               {/* Pratinjau Manifest Terbaru (Recent 5 Entries) */}
-              <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs space-y-2">
-                <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
-                  <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
+              <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-5 shadow-xs space-y-3">
+                <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2.5">
+                  <h3 className="text-xs 2xl:text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                    <Clock className="w-4 h-4 2xl:w-5 2xl:h-5 text-[#2563EB]" />
                     5 Manifest Paket Terakhir
                   </h3>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="text-[11px] text-[#2563EB] hover:underline font-bold flex items-center gap-1"
+                    className="text-xs 2xl:text-sm text-[#2563EB] hover:underline font-bold flex items-center gap-1"
                   >
                     <span>Lihat Semua di Ledger</span>
-                    <ArrowRight className="w-3 h-3" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 
                 {shipments.length === 0 ? (
-                  <div className="p-4 text-center text-xs text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
+                  <div className="p-4 text-center text-xs 2xl:text-sm text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
                     Belum ada manifest terdaftar dalam sistem. Klik "+ Input Manifest Baru" untuk memulai pencatatan.
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
-                    <table className="w-full text-left text-xs border-collapse">
+                    <table className="w-full text-left text-xs 2xl:text-sm border-collapse">
                       <thead>
-                        <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-[10px] uppercase">
-                          <th className="py-1.5 px-2.5">Tanggal</th>
-                          <th className="py-1.5 px-2.5">No. Resi</th>
-                          <th className="py-1.5 px-2.5">Pengirim &amp; Penerima</th>
-                          <th className="py-1.5 px-2.5">Layanan</th>
-                          <th className="py-1.5 px-2.5 text-right">Berat</th>
-                          <th className="py-1.5 px-2.5 text-right">Jumlah</th>
-                          <th className="py-1.5 px-2.5 text-center">Aksi</th>
+                        <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-xs 2xl:text-sm uppercase">
+                          <th className="py-2.5 px-3">Tanggal</th>
+                          <th className="py-2.5 px-3">No. Resi</th>
+                          <th className="py-2.5 px-3">Pengirim &amp; Penerima</th>
+                          <th className="py-2.5 px-3">Layanan</th>
+                          <th className="py-2.5 px-3 text-right">Berat</th>
+                          <th className="py-2.5 px-3 text-right">Jumlah</th>
+                          <th className="py-2.5 px-3 text-center">Aksi</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E2E8F0]">
                         {sortedShipments.slice(0, 5).map((item) => (
                           <tr key={item.id} className="hover:bg-[#F8FAFC]">
-                            <td className="py-1.5 px-2.5 font-mono text-[#334155] whitespace-nowrap text-[11px]">{item.date}</td>
-                            <td className="py-1.5 px-2.5 font-mono font-bold text-[#0F172A] whitespace-nowrap text-[11px]">{item.resiNumber}</td>
-                            <td className="py-1.5 px-2.5 text-[11px]">
+                            <td className="py-2.5 px-3 font-mono text-[#334155] whitespace-nowrap text-xs 2xl:text-sm">{item.date}</td>
+                            <td className="py-2.5 px-3 font-mono font-bold text-[#0F172A] whitespace-nowrap text-xs 2xl:text-sm">{item.resiNumber}</td>
+                            <td className="py-2.5 px-3 text-xs 2xl:text-sm">
                               <div className="font-semibold text-[#0F172A]">{item.senderName}</div>
-                              <div className="text-[10px] text-[#64748B]">Ke: {item.receiverName}</div>
+                              <div className="text-xs 2xl:text-sm text-[#64748B]">Ke: {item.receiverName}</div>
                             </td>
-                            <td className="py-1.5 px-2.5 font-mono text-[#334155] whitespace-nowrap text-[11px]">{item.serviceType}</td>
-                            <td className="py-1.5 px-2.5 font-mono text-right whitespace-nowrap text-[11px]">{item.weight} kg</td>
-                            <td className="py-1.5 px-2.5 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap text-[11px]">
+                            <td className="py-2.5 px-3 font-mono text-[#334155] whitespace-nowrap text-xs 2xl:text-sm">{item.serviceType}</td>
+                            <td className="py-2.5 px-3 font-mono text-right whitespace-nowrap text-xs 2xl:text-sm">{item.weight} kg</td>
+                            <td className="py-2.5 px-3 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap text-xs 2xl:text-sm">
                               {formatRupiah(item.amount)}
                             </td>
-                            <td className="py-1.5 px-2.5 text-center whitespace-nowrap">
-                              <div className="flex items-center justify-center gap-1">
+                            <td className="py-2.5 px-3 text-center whitespace-nowrap">
+                              <div className="flex items-center justify-center gap-1.5">
                                 <button
                                   type="button"
                                   onClick={() => setSelectedForPrint(item)}
                                   title="Cetak Label Thermal"
-                                  className="p-1 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
+                                  className="p-1.5 2xl:p-2 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
                                 >
-                                  <Printer className="w-3.5 h-3.5" />
+                                  <Printer className="w-4 h-4 2xl:w-4.5 2xl:h-4.5" />
                                 </button>
                                 <button
                                   type="button"
                                   onClick={() => handleStartEdit(item)}
                                   title="Edit Manifest"
-                                  className="p-1 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
+                                  className="p-1.5 2xl:p-2 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
                                 >
-                                  <Edit2 className="w-3.5 h-3.5" />
+                                  <Edit2 className="w-4 h-4 2xl:w-4.5 2xl:h-4.5" />
                                 </button>
                               </div>
                             </td>
