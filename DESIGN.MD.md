@@ -1,76 +1,74 @@
 ---
-version: "neuform-top-creators-featured"
-name: "Nexus Analytics Dashboard"
-description: "Nexus Analytics Dashboard Section is designed for demonstrating application workflows and interface hierarchy. Key features include clear information density, modular panels, and interface rhythm. It is suitable for product showcases, admin panels, and analytics experiences."
+version: "janka-light-paper-logistics-v5"
+name: "Janka Logistics & Petty Cash Ledger System"
+description: "High-density light paper-logistics ledger design system. Engineered for fast parcel manifest entry, expedition rate calculation, thermal shipping label printing, and 6-column monthly petty cash auditing."
 colors:
-  primary: "#000000"
-  secondary: "#94A3B8"
-  accent: "#94A3B8"
-  background: "#000000"
-  surface: "#94A3B8"
-  text-primary: "#FFFFFF"
-  text-secondary: "#A1A1AA"
-  border: "#CBD5E1"
+  primary: "#1E293B"
+  secondary: "#475569"
+  accent: "#2563EB"
+  background: "#F5F6F8"
+  surface: "#FFFFFF"
+  text-primary: "#0F172A"
+  text-secondary: "#64748B"
+  border: "#D5D9E0"
+  status-success: "#16A34A"
+  status-error: "#EF4444"
+  status-warning: "#F59E0B"
 typography:
   display-lg:
-    fontFamily: "Inter"
-    fontSize: "64px"
-    fontWeight: 500
-    lineHeight: "1.04"
-    letterSpacing: "0"
+    fontFamily: "Inter, system-ui, sans-serif"
+    fontSize: "18px"
+    fontWeight: 700
+    lineHeight: "1.2"
   body-md:
-    fontFamily: "Inter"
-    fontSize: "16px"
-    fontWeight: 400
-    lineHeight: "1.6"
-  label-md:
-    fontFamily: "JetBrains Mono"
+    fontFamily: "Inter, system-ui, sans-serif"
     fontSize: "12px"
+    fontWeight: 400
+    lineHeight: "1.5"
+  label-mono:
+    fontFamily: "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+    fontSize: "11px"
     fontWeight: 600
     lineHeight: "1.2"
 spacing:
-  base: "8px"
-  gap: "16px"
-  card-padding: "24px"
-  section-padding: "80px"
+  base: "4px"
+  gap: "12px"
+  card-padding: "16px"
+  section-padding: "20px"
 rounded:
-  card: "14px"
-  control: "14px"
-  pill: "9999px"
-components:
-  card:
-    background: "Use the surface token with subtle borders and HTML-matched shadow depth"
-    radius: "Match the declared card radius token"
-  button:
-    background: "Use primary or accent colors for the main action"
-    radius: "Use the control or pill radius based on the source HTML"
+  card: "3px"
+  control: "2px"
+  pill: "none (strictly 2px-4px crisp border radius, no rounded-full pills except 2px status dots)"
+architecture:
+  components: "src/components/ (EntryForm, LedgerTable, FilterBar, DashboardSummary, PrintLabelDialog, ReconcileDialog, RateSettingsDialog, DeleteConfirmDialog)"
+  hooks: "src/hooks/ (useShipments)"
+  lib: "src/lib/ (excel.ts, formatters.ts)"
 ---
-# Nexus Analytics Dashboard
-Source: Neuform Featured templates from top creators. Author: Sourasith Phomhome (@madebysourasith). Views: 52; favorites: 22; remixes: 5.
-Tags: dashboard, animated, webgl, threejs, cta, bento, charts, security.
+# Janka Light Paper-Logistics Ledger System
+
 ## Overview
-Nexus Analytics Dashboard Section is designed for demonstrating application workflows and interface hierarchy. Key features include clear information density, modular panels, and interface rhythm. It is suitable for product showcases, admin panels, and analytics experiences.
+Janka is an operational logistics ledger for warehouse managers, shipping admins, and logistics auditors. The UI adopts a **light paper-logistics aesthetic**: clean white surface `#FFFFFF`, canvas `#F5F6F8`, crisp borders `#D5D9E0`, and dark slate typography `#0F172A`.
 
-NEXUS Overview Campaigns Audience Revenue Settings Revenue Analytics Monitor daily revenue fluctuations and track the performance of your primary conversion funnels. Week +34% This week's revenue has significantly outpe…
-## Composition
-Use the attached HTML reference as the source of truth. Preserve the visible hierarchy, first-screen composition, section rhythm, density, and interaction tone before adapting copy or content.
-Key visible headings include: Revenue Analytics; +34%; Top Partners; Upgrade to Pro; Active Campaigns; Q3 Enterprise Push.
-## Colors
-Anchor the palette in primary #000000, secondary #94A3B8, accent #94A3B8, background #000000, surface #94A3B8, text-primary #FFFFFF. Keep background, surface, text, and border roles distinct so generated layouts retain the same contrast pattern as the source.
-## Typography
-Use Inter for display moments and Inter for body copy unless the HTML clearly demands a compatible fallback. Labels and technical metadata should use JetBrains Mono or an equivalent mono face.
-## Layout
-Keep spacing deliberate and stable. Favor the same grid direction, max-width behavior, card density, and responsive stacking seen in the HTML. Do not replace distinctive source structures with generic SaaS sections.
-## Components
-Dashboard, chart, and data panels should preserve their compact operational hierarchy, nested surfaces, and metric emphasis.
-## Motion
-Preserve existing motion cues such as masked reveals, staggered entrance, hover lift, scroll-triggered transitions, and ambient movement. Keep easing smooth and restrained.
-## WebGL & Effects
+## Core Visual Invariants (Antislop UI)
+1. **Light Paper Theme**: No pitch-black `#000000` dark modes, no purple-blue gradients, no hero cards, and no decorative glow.
+2. **Crisp Radius (2px–4px)**: Buttons, inputs, tables, cards, and badges use strict 2px–3px border radii. **No `rounded-full` pills** are allowed on buttons, cards, or badges (only 2px circular status dots are permitted).
+3. **Operational Typography**: Clean sans-serif for UI labels paired with tabular monospace for waybill numbers (`NO. KIRIM`), transaction amounts, weights (`kg`), and timestamps.
+4. **Restrained Operational Copy**: Indonesian operational language (`"Stasiun Input Manifest"`, `"Kas Reguler"`, `"Cetak Label Thermal"`, `"Rekonsiliasi J&T"`). Zero marketing fluff or emojis.
 
-If the source includes canvas, WebGL, Three.js, gradients, particles, or atmospheric effects, rebuild them as supporting layers behind the content. Keep effects performant, responsive, and secondary to the interface.
+## Layout & Widescreen Architecture (2K Fluid Layout)
+- **Fluid Widescreen Container**: Uses `max-w-[1600px] w-full mx-auto` to utilize 2560x1440 and 1080p screens efficiently.
+- **Two-Column Split (`xl`/`2xl`)**:
+  - **Left Column (`aside w-[420px] sticky top-14`)**: Sticky input station ([`EntryForm.tsx`](file:///home/vallencia/Documents/janka/src/components/EntryForm.tsx)) allowing rapid manifest logging while keeping table context in view.
+  - **Right Column (`section flex-1 min-w-0`)**: Summary metrics, filter controls, and compact ledger table.
 
-## Guardrails
-- Do not flatten the source into a generic card grid.
-- Do not swap the color mode unless the source clearly supports it.
-- Preserve the first viewport signal, focal object, and visual density.
-- Keep buttons, cards, and badges aligned to the same radius and border language.
+## Modular Code Structure
+- **`src/components/`**: Modular UI components ([`EntryForm.tsx`](file:///home/vallencia/Documents/janka/src/components/EntryForm.tsx), [`LedgerTable.tsx`](file:///home/vallencia/Documents/janka/src/components/LedgerTable.tsx), [`FilterBar.tsx`](file:///home/vallencia/Documents/janka/src/components/FilterBar.tsx), [`DashboardSummary.tsx`](file:///home/vallencia/Documents/janka/src/components/DashboardSummary.tsx), [`PrintLabelDialog.tsx`](file:///home/vallencia/Documents/janka/src/components/PrintLabelDialog.tsx), [`ReconcileDialog.tsx`](file:///home/vallencia/Documents/janka/src/components/ReconcileDialog.tsx), [`RateSettingsDialog.tsx`](file:///home/vallencia/Documents/janka/src/components/RateSettingsDialog.tsx), [`DeleteConfirmDialog.tsx`](file:///home/vallencia/Documents/janka/src/components/DeleteConfirmDialog.tsx)).
+- **`src/hooks/`**: Custom data hook ([`useShipments.ts`](file:///home/vallencia/Documents/janka/src/hooks/useShipments.ts)) managing `janka_shipments_v1`, `janka_rates_v1`, CRUD operations, corrupt JSON fallbacks, and full-dataset reconciliation.
+- **`src/lib/`**: Business logic, formatting, and ExcelJS exporter ([`excel.ts`](file:///home/vallencia/Documents/janka/src/lib/excel.ts), [`formatters.ts`](file:///home/vallencia/Documents/janka/src/lib/formatters.ts)).
+
+## Excel Sheet Specification (Kas Reguler)
+- **Exact 6 Columns**: `[TANGGAL | NO. KIRIM | NAMA PENGIRIM | JENIS PAKET | JUMLAH | JENIS TRANSAKSI]`.
+- **Monthly Worksheets**: One worksheet per month present in the dataset (e.g. `"September 2026"`, `"Agustus 2026"`). Months without entries do not produce empty worksheets.
+- **Title Block**: Header row 1 titled `"KAS REGULER"` with subtitle period label.
+- **Formula Totals**: Native Excel `=SUM(...)` total row per sheet for column `JUMLAH`.
+- **Print Setup**: Landscape, fit-to-page, repeating header row 4, filename `janka-petty-cash-YYYY-MM-DD.xlsx`.

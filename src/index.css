@@ -3,33 +3,45 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
+  --bg-canvas: #F5F6F8;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #EDF0F4;
+  --border-main: #D5D9E0;
+  --border-strong: #9CA3AF;
+  --text-main: #111827;
+  --text-muted: #4B5563;
+  --text-dim: #9CA3AF;
+  --accent-primary: #0F172A;
+  --accent-action: #1E3A8A;
 }
 
 body {
   margin: 0;
-  background-color: #000000;
-  color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-main);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle clean scrollbar */
+/* Crisp technical scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
-  border-radius: 9999px;
+  background: #CBD5E1;
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.4);
+  background: #94A3B8;
 }
 
-/* Print optimizations for Shipping Label */
+/* High-contrast thermal print label isolation */
 @media print {
   body {
     background-color: #FFFFFF !important;
