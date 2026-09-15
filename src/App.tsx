@@ -431,28 +431,28 @@ export default function App() {
       )}
 
       {/* ── 3. DESKTOP LEFT SIDEBAR NAVIGATION (>= lg screen) ── */}
-      <aside className="hidden lg:flex lg:w-64 xl:w-72 lg:flex-col lg:fixed lg:inset-y-0 bg-white border-r border-[#D5D9E0] z-30">
+      <aside className="hidden lg:flex lg:w-60 xl:w-64 2xl:w-64 lg:flex-col lg:fixed lg:inset-y-0 bg-white border-r border-[#D5D9E0] z-30">
         {/* Sidebar Brand Header */}
-        <div className="p-5 border-b border-[#D5D9E0] bg-white">
-          <div className="flex items-center gap-3">
-            <div className="bg-[#0F172A] text-white px-3 py-1.5 font-mono font-bold tracking-wider text-base rounded-[2px] shadow-xs">
+        <div className="p-3 2xl:p-3.5 border-b border-[#D5D9E0] bg-white">
+          <div className="flex items-center gap-2.5">
+            <div className="bg-[#0F172A] text-white px-2 py-1 font-mono font-bold tracking-wider text-xs 2xl:text-sm rounded-[2px] shadow-xs">
               JANKA
             </div>
             <div>
-              <h1 className="text-sm font-bold text-[#0F172A] leading-tight">Logistics Ledger</h1>
+              <h1 className="text-xs 2xl:text-xs font-bold text-[#0F172A] leading-tight">Logistics Ledger</h1>
               <div className="inline-block text-[10px] bg-[#E2E8F0] text-[#334155] px-1.5 py-0.5 rounded-[2px] font-mono font-semibold uppercase mt-0.5">
                 Kas Reguler
               </div>
             </div>
           </div>
-          <p className="text-[11px] text-[#475569] mt-2.5 leading-normal">
-            Pencatatan Manifest Paket, Ekspedisi J&T & JNE, dan Buku Operasional
+          <p className="text-[10px] 2xl:text-[11px] text-[#475569] mt-1.5 leading-normal">
+            Pencatatan Manifest Paket, Ekspedisi J&amp;T &amp; JNE, dan Buku Operasional
           </p>
         </div>
 
         {/* Sidebar Navigation Items */}
-        <nav className="p-4 space-y-2 flex-1 overflow-y-auto">
-          <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] px-3 pb-1 font-bold">
+        <nav className="p-2.5 2xl:p-3 space-y-1 2xl:space-y-1.5 flex-1 overflow-y-auto">
+          <div className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] px-2.5 pb-0.5 font-bold">
             NAVIGASI UTAMA
           </div>
           {menuItems.map((item) => {
@@ -463,14 +463,14 @@ export default function App() {
                 key={item.id}
                 type="button"
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full min-h-[44px] p-3 rounded-[2px] flex items-center justify-between gap-3 text-left transition-all border ${
+                className={`w-full min-h-[36px] 2xl:min-h-[38px] p-2 2xl:p-2.5 rounded-[2px] flex items-center justify-between gap-2.5 text-left transition-all border ${
                   isActive
                     ? 'bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs'
                     : 'bg-white text-[#334155] hover:bg-[#F8FAFC] border-transparent hover:border-[#CBD5E1]'
                 }`}
               >
-                <div className="flex items-center gap-3 min-w-0">
-                  <Icon className={`w-4.5 h-4.5 shrink-0 ${isActive ? 'text-[#38BDF8]' : 'text-[#475569]'}`} />
+                <div className="flex items-center gap-2 min-w-0">
+                  <Icon className={`w-3.5 h-3.5 2xl:w-4 2xl:h-4 shrink-0 ${isActive ? 'text-[#38BDF8]' : 'text-[#475569]'}`} />
                   <div className="truncate">
                     <div className="text-xs font-semibold leading-snug">{item.label}</div>
                     <div className={`text-[10px] truncate ${isActive ? 'text-[#94A3B8]' : 'text-[#64748B]'}`}>
@@ -494,10 +494,10 @@ export default function App() {
         </nav>
 
         {/* Sidebar Bottom Footer Info */}
-        <div className="p-4 border-t border-[#D5D9E0] bg-[#F8FAFC] space-y-2">
-          <div className="flex items-center gap-2 text-xs text-[#334155]">
+        <div className="p-2.5 2xl:p-3 border-t border-[#D5D9E0] bg-[#F8FAFC] space-y-1">
+          <div className="flex items-center gap-1.5 text-xs text-[#334155]">
             <span className="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse" />
-            <span className="font-mono text-[11px] font-bold">Status Operasional Normal</span>
+            <span className="font-mono text-[10px] font-bold">Status Operasional Normal</span>
           </div>
           <div className="flex items-center justify-between text-[10px] font-mono text-[#64748B]">
             <span>Total Database:</span>
@@ -507,52 +507,52 @@ export default function App() {
       </aside>
 
       {/* ── 4. MAIN CONTENT VIEW CONTAINER ── */}
-      <div className="flex-1 lg:pl-64 xl:pl-72 flex flex-col min-w-0">
+      <div className="flex-1 lg:pl-60 xl:pl-64 2xl:pl-64 flex flex-col min-w-0">
         {/* Global Toast Notification */}
         {toastMessage && (
-          <div className="fixed top-4 right-4 z-50 bg-[#0F172A] text-white text-xs px-4 py-3 rounded-[2px] shadow-lg border border-[#334155] flex items-center gap-2 animate-fade-in">
+          <div className="fixed top-4 right-4 z-50 bg-[#0F172A] text-white text-xs px-4 py-2.5 rounded-[2px] shadow-lg border border-[#334155] flex items-center gap-2 animate-fade-in">
             <span className="w-2 h-2 rounded-full bg-[#38BDF8]" />
             <span className="font-medium">{toastMessage}</span>
           </div>
         )}
 
         {/* Active Page View Switcher */}
-        <main className="p-4 sm:p-6 lg:p-8 space-y-6 max-w-[1600px] w-full mx-auto pb-24 lg:pb-12">
+        <main className="p-3 sm:p-4 lg:p-4.5 2xl:p-5 space-y-3 2xl:space-y-3.5 max-w-[1440px] 2xl:max-w-[1500px] w-full mx-auto pb-16 lg:pb-8">
           {/* VIEW A: 📊 DASHBOARD & ANALYTICS */}
           {activeTab === 'dashboard' && (
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-3 2xl:space-y-3.5 animate-fade-in">
               {/* Header */}
-              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="bg-white border border-[#D5D9E0] p-2.5 sm:p-3 2xl:p-3.5 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-2.5">
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="text-[10px] font-mono uppercase bg-[#E2E8F0] text-[#334155] px-2 py-0.5 rounded-[2px] font-semibold">
                       DASHBOARD METRICS
                     </span>
-                    <span className="text-xs text-[#64748B]">Real-time Overview</span>
+                    <span className="text-[11px] text-[#64748B]">Real-time Overview</span>
                   </div>
-                  <h1 className="text-xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
-                    <LayoutDashboard className="w-5 h-5 text-[#2563EB]" />
-                    Dashboard & Analytics Operasional
+                  <h1 className="text-base 2xl:text-lg font-bold text-[#0F172A] mt-0.5 flex items-center gap-1.5">
+                    <LayoutDashboard className="w-4 h-4 2xl:w-4.5 2xl:h-4.5 text-[#2563EB]" />
+                    Dashboard &amp; Analytics Operasional
                   </h1>
-                  <p className="text-xs text-[#475569] mt-0.5">
-                    Ringkasan statistik manifest, total pengeluaran kas reguler, performa ekspedisi J&T vs JNE, dan tren harian.
+                  <p className="text-[11px] 2xl:text-xs text-[#475569] mt-0.5">
+                    Ringkasan statistik manifest, total pengeluaran kas reguler, performa ekspedisi J&amp;T vs JNE, dan tren harian.
                   </p>
                 </div>
                 <div className="flex items-center gap-2 flex-wrap">
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="btn-hover-lift min-h-[44px] px-4 py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[32px] 2xl:min-h-[34px] px-3 2xl:px-3.5 py-1.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-[2px] flex items-center gap-1.5 shadow-xs"
                   >
-                    <PlusCircle className="w-4 h-4" />
+                    <PlusCircle className="w-3.5 h-3.5" />
                     <span>+ Input Manifest Baru</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="btn-hover-lift min-h-[44px] px-4 py-2.5 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[32px] 2xl:min-h-[34px] px-3 2xl:px-3.5 py-1.5 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold rounded-[2px] flex items-center gap-1.5 shadow-xs"
                   >
-                    <BookOpen className="w-4 h-4" />
+                    <BookOpen className="w-3.5 h-3.5" />
                     <span>Buka Buku Ledger</span>
                   </button>
                 </div>
@@ -570,79 +570,79 @@ export default function App() {
               </section>
 
               {/* Quick Action Navigation Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="bg-white border border-[#D5D9E0] p-4 rounded-[3px] shadow-xs flex flex-col justify-between">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 2xl:gap-3">
+                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
                   <div>
-                    <div className="w-8 h-8 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-3 border border-[#CBD5E1]">
-                      <FilePlus className="w-4 h-4 text-[#2563EB]" />
+                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
+                      <FilePlus className="w-3.5 h-3.5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-sm font-bold text-[#0F172A]">Stasiun Input Manifest</h3>
-                    <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
-                      Catat paket baru, hitung ongkir otomatis J&T & JNE, dan cetak label thermal 100x150mm secara langsung.
+                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Stasiun Input Manifest</h3>
+                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                      Catat paket baru, hitung ongkir otomatis J&amp;T &amp; JNE, dan cetak label thermal 100x150mm secara langsung.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="mt-4 min-h-[44px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
                   >
                     <span>Ke Stasiun Input</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-4 rounded-[3px] shadow-xs flex flex-col justify-between">
+                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
                   <div>
-                    <div className="w-8 h-8 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-3 border border-[#CBD5E1]">
-                      <BookOpen className="w-4 h-4 text-[#2563EB]" />
+                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
+                      <BookOpen className="w-3.5 h-3.5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-sm font-bold text-[#0F172A]">Buku Ledger Data Paket</h3>
-                    <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
-                      Pencarian resi, filter tanggal & kurir, audit data kas operasional, serta ekspor Excel 6-kolom (.xlsx).
+                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Buku Ledger Data Paket</h3>
+                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                      Pencarian resi, filter tanggal &amp; kurir, audit data kas operasional, serta ekspor Excel 6-kolom (.xlsx).
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="mt-4 min-h-[44px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
                   >
                     <span>Lihat Ledger ({shipments.length} Data)</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
 
-                <div className="bg-white border border-[#D5D9E0] p-4 rounded-[3px] shadow-xs flex flex-col justify-between">
+                <div className="bg-white border border-[#D5D9E0] p-2.5 2xl:p-3 rounded-[3px] shadow-xs flex flex-col justify-between">
                   <div>
-                    <div className="w-8 h-8 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-3 border border-[#CBD5E1]">
-                      <Settings className="w-4 h-4 text-[#2563EB]" />
+                    <div className="w-6 2xl:w-6.5 h-6 2xl:h-6.5 rounded-[2px] bg-[#F1F5F9] text-[#0F172A] flex items-center justify-center mb-1.5 border border-[#CBD5E1]">
+                      <Settings className="w-3.5 h-3.5 text-[#2563EB]" />
                     </div>
-                    <h3 className="text-sm font-bold text-[#0F172A]">Pengaturan & Alat Audit</h3>
-                    <p className="text-xs text-[#64748B] mt-1 leading-relaxed">
-                      Kelola tarif kurir, jalankan rekonsiliasi resi J&T malam hari, dan backup/restore data JSON.
+                    <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A]">Pengaturan &amp; Alat Audit</h3>
+                    <p className="text-[10px] 2xl:text-[11px] text-[#64748B] mt-0.5 leading-snug">
+                      Kelola tarif kurir, jalankan rekonsiliasi resi J&amp;T malam hari, dan backup/restore data JSON.
                     </p>
                   </div>
                   <button
                     type="button"
                     onClick={() => setActiveTab('settings')}
-                    className="mt-4 min-h-[44px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 transition-colors"
+                    className="mt-2 min-h-[30px] 2xl:min-h-[32px] w-full bg-[#F8FAFC] hover:bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] text-[11px] font-bold py-1 px-2.5 rounded-[2px] flex items-center justify-center gap-1 transition-colors"
                   >
-                    <span>Buka Alat & Pengaturan</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <span>Buka Alat &amp; Pengaturan</span>
+                    <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
               </div>
 
               {/* Pratinjau Manifest Terbaru (Recent 5 Entries) */}
-              <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-                <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-3">
-                  <h3 className="text-sm font-bold text-[#0F172A] flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#2563EB]" />
+              <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-2.5 2xl:p-3 shadow-xs space-y-2">
+                <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
+                  <h3 className="text-xs 2xl:text-xs font-bold text-[#0F172A] flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-[#2563EB]" />
                     5 Manifest Paket Terakhir
                   </h3>
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="text-xs text-[#2563EB] hover:underline font-bold flex items-center gap-1"
+                    className="text-[11px] text-[#2563EB] hover:underline font-bold flex items-center gap-1"
                   >
                     <span>Lihat Semua di Ledger</span>
                     <ArrowRight className="w-3 h-3" />
@@ -650,44 +650,44 @@ export default function App() {
                 </div>
 
                 {shipments.length === 0 ? (
-                  <div className="p-6 text-center text-xs text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
+                  <div className="p-4 text-center text-xs text-[#64748B] bg-[#F8FAFC] rounded-[2px] border border-dashed border-[#CBD5E1]">
                     Belum ada manifest terdaftar dalam sistem. Klik "+ Input Manifest Baru" untuk memulai pencatatan.
                   </div>
                 ) : (
                   <div className="overflow-x-auto">
                     <table className="w-full text-left text-xs border-collapse">
                       <thead>
-                        <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-[11px] uppercase">
-                          <th className="py-2.5 px-3">Tanggal</th>
-                          <th className="py-2.5 px-3">No. Resi</th>
-                          <th className="py-2.5 px-3">Pengirim & Penerima</th>
-                          <th className="py-2.5 px-3">Layanan</th>
-                          <th className="py-2.5 px-3 text-right">Berat</th>
-                          <th className="py-2.5 px-3 text-right">Jumlah</th>
-                          <th className="py-2.5 px-3 text-center">Aksi</th>
+                        <tr className="bg-[#F8FAFC] border-b border-[#D5D9E0] text-[#475569] font-mono text-[10px] uppercase">
+                          <th className="py-1.5 px-2.5">Tanggal</th>
+                          <th className="py-1.5 px-2.5">No. Resi</th>
+                          <th className="py-1.5 px-2.5">Pengirim &amp; Penerima</th>
+                          <th className="py-1.5 px-2.5">Layanan</th>
+                          <th className="py-1.5 px-2.5 text-right">Berat</th>
+                          <th className="py-1.5 px-2.5 text-right">Jumlah</th>
+                          <th className="py-1.5 px-2.5 text-center">Aksi</th>
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-[#E2E8F0]">
                         {sortedShipments.slice(0, 5).map((item) => (
                           <tr key={item.id} className="hover:bg-[#F8FAFC]">
-                            <td className="py-2.5 px-3 font-mono text-[#334155] whitespace-nowrap">{item.date}</td>
-                            <td className="py-2.5 px-3 font-mono font-bold text-[#0F172A] whitespace-nowrap">{item.resiNumber}</td>
-                            <td className="py-2.5 px-3">
+                            <td className="py-1.5 px-2.5 font-mono text-[#334155] whitespace-nowrap text-[11px]">{item.date}</td>
+                            <td className="py-1.5 px-2.5 font-mono font-bold text-[#0F172A] whitespace-nowrap text-[11px]">{item.resiNumber}</td>
+                            <td className="py-1.5 px-2.5 text-[11px]">
                               <div className="font-semibold text-[#0F172A]">{item.senderName}</div>
-                              <div className="text-[11px] text-[#64748B]">Ke: {item.receiverName}</div>
+                              <div className="text-[10px] text-[#64748B]">Ke: {item.receiverName}</div>
                             </td>
-                            <td className="py-2.5 px-3 font-mono text-[#334155] whitespace-nowrap">{item.serviceType}</td>
-                            <td className="py-2.5 px-3 font-mono text-right whitespace-nowrap">{item.weight} kg</td>
-                            <td className="py-2.5 px-3 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap">
+                            <td className="py-1.5 px-2.5 font-mono text-[#334155] whitespace-nowrap text-[11px]">{item.serviceType}</td>
+                            <td className="py-1.5 px-2.5 font-mono text-right whitespace-nowrap text-[11px]">{item.weight} kg</td>
+                            <td className="py-1.5 px-2.5 font-mono font-bold text-right text-[#0F172A] whitespace-nowrap text-[11px]">
                               {formatRupiah(item.amount)}
                             </td>
-                            <td className="py-2.5 px-3 text-center whitespace-nowrap">
+                            <td className="py-1.5 px-2.5 text-center whitespace-nowrap">
                               <div className="flex items-center justify-center gap-1">
                                 <button
                                   type="button"
                                   onClick={() => setSelectedForPrint(item)}
                                   title="Cetak Label Thermal"
-                                  className="p-1.5 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
+                                  className="p-1 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
                                 >
                                   <Printer className="w-3.5 h-3.5" />
                                 </button>
@@ -695,7 +695,7 @@ export default function App() {
                                   type="button"
                                   onClick={() => handleStartEdit(item)}
                                   title="Edit Manifest"
-                                  className="p-1.5 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
+                                  className="p-1 hover:bg-[#E2E8F0] rounded-[2px] text-[#334155]"
                                 >
                                   <Edit2 className="w-3.5 h-3.5" />
                                 </button>
@@ -713,35 +713,35 @@ export default function App() {
 
           {/* VIEW B: 📝 INPUT MANIFEST PAKET */}
           {activeTab === 'input' && (
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
               {/* Header */}
-              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
+                    <span className="text-[10px] 2xl:text-xs font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
                       STASIUN INPUT MANIFEST
                     </span>
                     {editingEntry && (
-                      <span className="text-xs bg-[#FEF3C7] text-[#92400E] border border-[#FCD34D] px-2 py-0.5 rounded-[2px] font-mono font-bold">
+                      <span className="text-xs 2xl:text-sm bg-[#FEF3C7] text-[#92400E] border border-[#FCD34D] px-2 py-0.5 rounded-[2px] font-mono font-bold">
                         MODUS EDIT TERPASANG
                       </span>
                     )}
                   </div>
-                  <h1 className="text-xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
-                    <FilePlus className="w-5 h-5 text-[#2563EB]" />
+                  <h1 className="text-xl 2xl:text-2xl 3xl:text-3xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
+                    <FilePlus className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                     Input Manifest Paket & Cetak Label
                   </h1>
-                  <p className="text-xs text-[#475569] mt-0.5">
+                  <p className="text-xs 2xl:text-sm text-[#475569] mt-0.5 2xl:mt-1">
                     Form pencatatan resi pengiriman, kalkulasi otomatis tarif ongkir J&T / JNE, dan pencetakan label thermal 100x150mm.
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 2xl:gap-3">
                   {editingEntry && (
                     <button
                       type="button"
                       onClick={() => setEditingEntry(null)}
-                      className="px-3 py-2 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold rounded-[2px]"
+                      className="min-h-[44px] 2xl:min-h-[48px] px-3.5 2xl:px-4 py-2 2xl:py-2.5 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold rounded-[2px]"
                     >
                       Batal Edit
                     </button>
@@ -749,18 +749,18 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('ledger')}
-                    className="btn-hover-lift min-h-[44px] px-4 py-2.5 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
-                    <BookOpen className="w-4 h-4" />
+                    <BookOpen className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>Buka Buku Ledger ({shipments.length})</span>
                   </button>
                 </div>
               </div>
 
               {/* Focused Split View */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 2xl:gap-8 3xl:gap-10 items-start">
                 {/* Form Input Station (Lg: 7-8 cols) */}
-                <div className="lg:col-span-7 xl:col-span-8 min-w-0 space-y-4">
+                <div className="lg:col-span-7 xl:col-span-8 min-w-0 space-y-4 2xl:space-y-6">
                   <EntryForm
                     rates={rates}
                     addressBook={addressBook}
@@ -773,58 +773,58 @@ export default function App() {
                 </div>
 
                 {/* Secondary Information & Recent Logged Entries (Lg: 4-5 cols) */}
-                <div className="lg:col-span-5 xl:col-span-4 min-w-0 space-y-4">
+                <div className="lg:col-span-5 xl:col-span-4 min-w-0 space-y-4 2xl:space-y-6">
                   {/* Operational Quick Guide */}
-                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] font-mono border-b border-[#E2E8F0] pb-2 flex items-center gap-1.5">
-                      <CheckCircle2 className="w-4 h-4 text-[#16A34A]" />
+                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
+                    <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-[#0F172A] font-mono border-b border-[#E2E8F0] pb-2 2xl:pb-3 flex items-center gap-1.5">
+                      <CheckCircle2 className="w-4 2xl:w-5 h-4 2xl:h-5 text-[#16A34A]" />
                       Petunjuk Cepat Pencatatan
                     </h3>
-                    <ul className="text-xs text-[#475569] space-y-2.5 leading-relaxed">
+                    <ul className="text-xs 2xl:text-sm text-[#475569] space-y-2.5 2xl:space-y-3 leading-relaxed">
                       <li className="flex items-start gap-2">
-                        <span className="font-mono text-[11px] font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">1</span>
+                        <span className="font-mono text-[11px] 2xl:text-xs font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">1</span>
                         <span>Ketik nama pengirim untuk menampilkan autocomplete dari <strong>Buku Alamat</strong>.</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="font-mono text-[11px] font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">2</span>
+                        <span className="font-mono text-[11px] 2xl:text-xs font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">2</span>
                         <span>Tarif dihitung otomatis berdasarkan berat (kg) & jenis layanan kurir (J&T / JNE).</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="font-mono text-[11px] font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">3</span>
+                        <span className="font-mono text-[11px] 2xl:text-xs font-bold bg-[#F1F5F9] text-[#0F172A] px-1.5 py-0.5 rounded-[2px]">3</span>
                         <span>Gunakan tombol <strong>Cetak Label Thermal</strong> (100x150mm) atau kirim notifikasi WhatsApp langsung ke pengirim.</span>
                       </li>
                     </ul>
                   </div>
 
                   {/* Recent Logged Entries */}
-                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 shadow-xs space-y-3">
-                    <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2">
-                      <h3 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] font-mono flex items-center gap-1.5">
-                        <Clock className="w-4 h-4 text-[#2563EB]" />
+                  <div className="bg-white border border-[#D5D9E0] rounded-[3px] p-4 2xl:p-6 shadow-xs space-y-3 2xl:space-y-4">
+                    <div className="flex items-center justify-between border-b border-[#E2E8F0] pb-2 2xl:pb-3">
+                      <h3 className="text-xs 2xl:text-sm font-bold uppercase tracking-wider text-[#0F172A] font-mono flex items-center gap-1.5">
+                        <Clock className="w-4 2xl:w-5 h-4 2xl:h-5 text-[#2563EB]" />
                         Manifest Terakhir Diinput
                       </h3>
-                      <span className="text-[10px] font-mono text-[#64748B]">{shipments.length} Total</span>
+                      <span className="text-[10px] 2xl:text-xs font-mono text-[#64748B]">{shipments.length} Total</span>
                     </div>
 
                     {shipments.length === 0 ? (
-                      <p className="text-xs text-[#64748B] py-4 text-center">Belum ada data manifest.</p>
+                      <p className="text-xs 2xl:text-sm text-[#64748B] py-4 text-center">Belum ada data manifest.</p>
                     ) : (
-                      <div className="space-y-2.5">
+                      <div className="space-y-2.5 2xl:space-y-3">
                         {sortedShipments.slice(0, 4).map((entry) => (
                           <div
                             key={entry.id}
-                            className="p-2.5 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[2px] flex items-center justify-between gap-2 hover:bg-[#F1F5F9] transition-colors"
+                            className="p-2.5 2xl:p-3 bg-[#F8FAFC] border border-[#E2E8F0] rounded-[2px] flex items-center justify-between gap-2 hover:bg-[#F1F5F9] transition-colors"
                           >
                             <div className="min-w-0 flex-1">
                               <div className="flex items-center gap-2">
-                                <span className="font-mono font-bold text-xs text-[#0F172A] truncate">
+                                <span className="font-mono font-bold text-xs 2xl:text-sm text-[#0F172A] truncate">
                                   {entry.resiNumber}
                                 </span>
-                                <span className="text-[10px] font-mono bg-[#E2E8F0] text-[#334155] px-1 rounded-[2px]">
+                                <span className="text-[10px] 2xl:text-xs font-mono bg-[#E2E8F0] text-[#334155] px-1 rounded-[2px]">
                                   {entry.serviceType}
                                 </span>
                               </div>
-                              <div className="text-[11px] text-[#475569] truncate mt-0.5">
+                              <div className="text-[11px] 2xl:text-xs text-[#475569] truncate mt-0.5">
                                 {entry.senderName} &rarr; {entry.receiverName}
                               </div>
                             </div>
@@ -833,18 +833,18 @@ export default function App() {
                               <button
                                 type="button"
                                 onClick={() => setSelectedForPrint(entry)}
-                                className="p-1.5 bg-white border border-[#CBD5E1] hover:bg-[#F1F5F9] text-[#0F172A] rounded-[2px] text-xs"
+                                className="p-1.5 2xl:p-2 bg-white border border-[#CBD5E1] hover:bg-[#F1F5F9] text-[#0F172A] rounded-[2px] text-xs"
                                 title="Cetak Label Thermal"
                               >
-                                <Printer className="w-3.5 h-3.5" />
+                                <Printer className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                               </button>
                               <button
                                 type="button"
                                 onClick={() => handleSendWhatsApp(entry)}
-                                className="p-1.5 bg-white border border-[#CBD5E1] hover:bg-[#F1F5F9] text-[#16A34A] rounded-[2px] text-xs"
+                                className="p-1.5 2xl:p-2 bg-white border border-[#CBD5E1] hover:bg-[#F1F5F9] text-[#16A34A] rounded-[2px] text-xs"
                                 title="Kirim Notifikasi WA"
                               >
-                                <MessageCircle className="w-3.5 h-3.5" />
+                                <MessageCircle className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                               </button>
                             </div>
                           </div>
@@ -855,7 +855,7 @@ export default function App() {
                     <button
                       type="button"
                       onClick={() => setActiveTab('ledger')}
-                      className="w-full text-center text-xs font-bold text-[#2563EB] hover:underline pt-1 block"
+                      className="w-full text-center text-xs 2xl:text-sm font-bold text-[#2563EB] hover:underline pt-1 block"
                     >
                       Lihat Semua Data di Buku Ledger &rarr;
                     </button>
@@ -867,21 +867,21 @@ export default function App() {
 
           {/* VIEW C: 📖 BUKU LEDGER / DATA MANIFEST */}
           {activeTab === 'ledger' && (
-            <div className="space-y-5 animate-fade-in">
+            <div className="space-y-5 2xl:space-y-7 animate-fade-in">
               {/* Header */}
-              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
+                    <span className="text-[10px] 2xl:text-xs font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
                       BUKU LEDGER DATA
                     </span>
-                    <span className="text-xs text-[#64748B]">Kas Reguler Operasional</span>
+                    <span className="text-xs 2xl:text-sm text-[#64748B]">Kas Reguler Operasional</span>
                   </div>
-                  <h1 className="text-xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
-                    <BookOpen className="w-5 h-5 text-[#2563EB]" />
+                  <h1 className="text-xl 2xl:text-2xl 3xl:text-3xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
+                    <BookOpen className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                     Buku Ledger & Data Manifest Paket
                   </h1>
-                  <p className="text-xs text-[#475569] mt-0.5">
+                  <p className="text-xs 2xl:text-sm text-[#475569] mt-0.5 2xl:mt-1">
                     Tabel lengkap manifest paket, pencarian cepat resi/pengirim, filter tanggal & kurir, serta ekspor laporan Excel (.xlsx).
                   </p>
                 </div>
@@ -890,9 +890,9 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setActiveTab('input')}
-                    className="btn-hover-lift min-h-[44px] px-4 py-2.5 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] px-4 2xl:px-5 py-2.5 2xl:py-3 bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold rounded-[2px] flex items-center gap-2 shadow-xs"
                   >
-                    <PlusCircle className="w-4 h-4" />
+                    <PlusCircle className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>+ Tambah Manifest Baru</span>
                   </button>
                 </div>
@@ -928,49 +928,49 @@ export default function App() {
 
           {/* VIEW D: ⚙️ PENGATURAN & ALAT */}
           {activeTab === 'settings' && (
-            <div className="space-y-6 animate-fade-in">
+            <div className="space-y-6 2xl:space-y-8 animate-fade-in">
               {/* Header */}
-              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 rounded-[3px] shadow-xs">
+              <div className="bg-white border border-[#D5D9E0] p-4 sm:p-5 2xl:p-6 rounded-[3px] shadow-xs">
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
+                  <span className="text-[10px] 2xl:text-xs font-mono uppercase bg-[#0F172A] text-white px-2 py-0.5 rounded-[2px] font-semibold">
                     KONFIGURASI & ALAT
                   </span>
-                  <span className="text-xs text-[#64748B]">Pemeliharaan Data System</span>
+                  <span className="text-xs 2xl:text-sm text-[#64748B]">Pemeliharaan Data System</span>
                 </div>
-                <h1 className="text-xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
-                  <Settings className="w-5 h-5 text-[#2563EB]" />
+                <h1 className="text-xl 2xl:text-2xl 3xl:text-3xl font-bold text-[#0F172A] mt-1 flex items-center gap-2">
+                  <Settings className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                   Pengaturan & Alat Operasional
                 </h1>
-                <p className="text-xs text-[#475569] mt-0.5">
+                <p className="text-xs 2xl:text-sm text-[#475569] mt-0.5 2xl:mt-1">
                   Kelola tarif dasar kurir ekspedisi, jalankan rekonsiliasi malam laporan J&T, serta unduh atau pulihkan backup JSON.
                 </p>
               </div>
 
               {/* Grid 4 Tool Cards */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 2xl:gap-7 3xl:gap-8">
                 {/* Panel 1: Tarif Dasar Kurir */}
-                <div className="bg-white border border-[#D5D9E0] p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3">
-                      <div className="p-2.5 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
-                        <Truck className="w-5 h-5 text-[#2563EB]" />
+                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                  <div className="space-y-3 2xl:space-y-4">
+                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
+                      <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
+                        <Truck className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-[#0F172A]">Tarif Dasar Kurir Ekspedisi</h3>
-                        <p className="text-xs text-[#64748B]">Biaya per kg untuk J&T (EZ) dan JNE (REG / YES)</p>
+                        <h3 className="text-sm 2xl:text-base font-bold text-[#0F172A]">Tarif Dasar Kurir Ekspedisi</h3>
+                        <p className="text-xs 2xl:text-sm text-[#64748B]">Biaya per kg untuk J&T (EZ) dan JNE (REG / YES)</p>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 bg-[#F8FAFC] p-3 rounded-[2px] border border-[#E2E8F0]">
+                    <div className="grid grid-cols-2 gap-3 2xl:gap-4 bg-[#F8FAFC] p-3 2xl:p-4 rounded-[2px] border border-[#E2E8F0]">
                       <div>
-                        <div className="text-[10px] font-mono uppercase text-[#64748B]">J&T EKSPRES</div>
-                        <div className="text-xs font-mono font-bold text-[#0F172A]">
+                        <div className="text-[10px] 2xl:text-xs font-mono uppercase text-[#64748B]">J&T EKSPRES</div>
+                        <div className="text-xs 2xl:text-sm font-mono font-bold text-[#0F172A]">
                           {formatRupiah(rates.JT)} /kg
                         </div>
                       </div>
                       <div>
-                        <div className="text-[10px] font-mono uppercase text-[#64748B]">JNE REGULER</div>
-                        <div className="text-xs font-mono font-bold text-[#0F172A]">
+                        <div className="text-[10px] 2xl:text-xs font-mono uppercase text-[#64748B]">JNE REGULER</div>
+                        <div className="text-xs 2xl:text-sm font-mono font-bold text-[#0F172A]">
                           {formatRupiah(rates.JNE)} /kg
                         </div>
                       </div>
@@ -980,27 +980,27 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setIsRateDialogOpen(true)}
-                    className="btn-hover-lift min-h-[44px] w-full bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-bold py-2.5 px-4 rounded-[2px] flex items-center justify-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] w-full bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs 2xl:text-sm font-bold py-2.5 2xl:py-3 px-4 rounded-[2px] flex items-center justify-center gap-2 shadow-xs"
                   >
-                    <Settings className="w-4 h-4" />
+                    <Settings className="w-4 2xl:w-4.5 h-4 2xl:h-4.5" />
                     <span>Kelola & Ubah Tarif Kurir</span>
                   </button>
                 </div>
 
                 {/* Panel 2: Rekonsiliasi Malam J&T */}
-                <div className="bg-white border border-[#D5D9E0] p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3">
-                      <div className="p-2.5 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
-                        <ShieldCheck className="w-5 h-5 text-[#16A34A]" />
+                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                  <div className="space-y-3 2xl:space-y-4">
+                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
+                      <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
+                        <ShieldCheck className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#16A34A]" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-[#0F172A]">Rekonsiliasi Malam J&T</h3>
-                        <p className="text-xs text-[#64748B]">Pencocokan laporan resi harian dari ekspedisi J&T</p>
+                        <h3 className="text-sm 2xl:text-base font-bold text-[#0F172A]">Rekonsiliasi Malam J&T</h3>
+                        <p className="text-xs 2xl:text-sm text-[#64748B]">Pencocokan laporan resi harian dari ekspedisi J&T</p>
                       </div>
                     </div>
 
-                    <p className="text-xs text-[#475569] leading-relaxed">
+                    <p className="text-xs 2xl:text-sm text-[#475569] leading-relaxed">
                       Tempelkan atau upload laporan nomor resi J&T untuk mencocokkan data manifest lokal. Sistem akan menandai paket yang sudah sesuai secara otomatis.
                     </p>
                   </div>
@@ -1008,81 +1008,81 @@ export default function App() {
                   <button
                     type="button"
                     onClick={() => setIsReconcileDialogOpen(true)}
-                    className="btn-hover-lift min-h-[44px] w-full bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2.5 px-4 rounded-[2px] flex items-center justify-center gap-2 shadow-xs"
+                    className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] w-full bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2.5 2xl:py-3 px-4 rounded-[2px] flex items-center justify-center gap-2 shadow-xs"
                   >
-                    <ShieldCheck className="w-4 h-4 text-[#16A34A]" />
+                    <ShieldCheck className="w-4 2xl:w-4.5 h-4 2xl:h-4.5 text-[#16A34A]" />
                     <span>Buka Dialog Rekonsiliasi J&T</span>
                   </button>
                 </div>
 
                 {/* Panel 3: Backup & Pemulihan Data JSON */}
-                <div className="bg-white border border-[#D5D9E0] p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3">
-                      <div className="p-2.5 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
-                        <Database className="w-5 h-5 text-[#2563EB]" />
+                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                  <div className="space-y-3 2xl:space-y-4">
+                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
+                      <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
+                        <Database className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#2563EB]" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-[#0F172A]">Backup & Pemulihan Data JSON</h3>
-                        <p className="text-xs text-[#64748B]">Ekspor cadangan penuh atau restore dari file JSON</p>
+                        <h3 className="text-sm 2xl:text-base font-bold text-[#0F172A]">Backup & Pemulihan Data JSON</h3>
+                        <p className="text-xs 2xl:text-sm text-[#64748B]">Ekspor cadangan penuh atau restore dari file JSON</p>
                       </div>
                     </div>
 
-                    <p className="text-xs text-[#475569] leading-relaxed">
+                    <p className="text-xs 2xl:text-sm text-[#475569] leading-relaxed">
                       Simpan cadangan lokal data manifest ({shipments.length} records) dan konfigurasi tarif ke format JSON safe backup.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 2xl:gap-3">
                     <button
                       type="button"
                       onClick={handleExportBackup}
-                      className="btn-hover-lift min-h-[44px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
+                      className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 2xl:py-2.5 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
                     >
-                      <Download className="w-3.5 h-3.5" />
+                      <Download className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                       <span>Unduh Backup</span>
                     </button>
                     <button
                       type="button"
                       onClick={() => setIsRestoreDialogOpen(true)}
-                      className="btn-hover-lift min-h-[44px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
+                      className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 2xl:py-2.5 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
                     >
-                      <Upload className="w-3.5 h-3.5" />
+                      <Upload className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                       <span>Restore Backup</span>
                     </button>
                   </div>
                 </div>
 
                 {/* Panel 4: Ekspor Laporan Excel & CSV */}
-                <div className="bg-white border border-[#D5D9E0] p-5 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4">
-                  <div className="space-y-3">
-                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3">
-                      <div className="p-2.5 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
-                        <FileSpreadsheet className="w-5 h-5 text-[#16A34A]" />
+                <div className="bg-white border border-[#D5D9E0] p-5 2xl:p-7 3xl:p-8 rounded-[3px] shadow-xs flex flex-col justify-between space-y-4 2xl:space-y-6">
+                  <div className="space-y-3 2xl:space-y-4">
+                    <div className="flex items-center gap-3 border-b border-[#E2E8F0] pb-3 2xl:pb-4">
+                      <div className="p-2.5 2xl:p-3 bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] rounded-[2px]">
+                        <FileSpreadsheet className="w-5 2xl:w-6 h-5 2xl:h-6 text-[#16A34A]" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-bold text-[#0F172A]">Ekspor Laporan Kas Reguler</h3>
-                        <p className="text-xs text-[#64748B]">Unduh spreadsheet resmi 6-kolom per bulan</p>
+                        <h3 className="text-sm 2xl:text-base font-bold text-[#0F172A]">Ekspor Laporan Kas Reguler</h3>
+                        <p className="text-xs 2xl:text-sm text-[#64748B]">Unduh spreadsheet resmi 6-kolom per bulan</p>
                       </div>
                     </div>
 
-                    <p className="text-xs text-[#475569] leading-relaxed">
+                    <p className="text-xs 2xl:text-sm text-[#475569] leading-relaxed">
                       Laporan Excel tersusun otomatis per lembar kerja bulanan (KAS REGULER) dengan rumus `=SUM(...)` native.
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-2 gap-2 2xl:gap-3">
                     <button
                       type="button"
                       onClick={handleExportExcel}
                       disabled={isExportingExcel || shipments.length === 0}
-                      className={`btn-hover-lift min-h-[44px] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs border ${
+                      className={`btn-hover-lift min-h-[44px] 2xl:min-h-[48px] text-xs 2xl:text-sm font-bold py-2 2xl:py-2.5 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs border ${
                         isExportingExcel
                           ? 'animate-shimmer text-white border-[#334155]'
                           : 'bg-[#0F172A] hover:bg-[#1E293B] text-white border-transparent'
                       }`}
                     >
-                      <FileSpreadsheet className="w-3.5 h-3.5" />
+                      <FileSpreadsheet className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                       <span>{isExportingExcel ? 'Mengekspor...' : 'Ekspor Excel'}</span>
                     </button>
                     <button
@@ -1096,9 +1096,9 @@ export default function App() {
                         showToast('Laporan CSV berhasil diunduh.');
                       }}
                       disabled={shipments.length === 0}
-                      className="btn-hover-lift min-h-[44px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs font-bold py-2 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
+                      className="btn-hover-lift min-h-[44px] 2xl:min-h-[48px] bg-white hover:bg-[#F8FAFC] text-[#0F172A] border border-[#CBD5E1] text-xs 2xl:text-sm font-bold py-2 2xl:py-2.5 px-3 rounded-[2px] flex items-center justify-center gap-1.5 shadow-xs"
                     >
-                      <Download className="w-3.5 h-3.5" />
+                      <Download className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
                       <span>Ekspor CSV</span>
                     </button>
                   </div>

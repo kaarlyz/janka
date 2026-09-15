@@ -203,10 +203,10 @@ export const EntryForm: React.FC<EntryFormProps> = ({
   return (
     <div id="entry-form-container" className="bg-white border border-[#D5D9E0] rounded-[3px] shadow-sm overflow-hidden">
       {/* Header Form */}
-      <div className="bg-[#F8FAFC] border-b border-[#D5D9E0] px-4 py-3 flex items-center justify-between">
+      <div className="bg-[#F8FAFC] border-b border-[#D5D9E0] px-4 2xl:px-6 py-3 2xl:py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Truck className="w-4 h-4 text-[#0F172A]" />
-          <h2 className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">
+          <Truck className="w-4 2xl:w-5 h-4 2xl:h-5 text-[#0F172A]" />
+          <h2 className="text-xs 2xl:text-sm font-bold text-[#0F172A] uppercase tracking-wider font-mono">
             {editingEntry ? `Edit Manifest: ${editingEntry.resiNumber}` : 'Stasiun Input Manifest Kas Reguler'}
           </h2>
         </div>
@@ -214,36 +214,36 @@ export const EntryForm: React.FC<EntryFormProps> = ({
           <button
             type="button"
             onClick={onCancelEdit}
-            className="btn-hover-lift inline-flex items-center gap-1 text-[11px] min-h-[32px] px-2.5 py-1 text-[#DC2626] bg-red-50 hover:bg-red-100 border border-red-200 rounded-[2px] font-medium transition-all"
+            className="btn-hover-lift inline-flex items-center gap-1 text-[11px] 2xl:text-xs min-h-[32px] 2xl:min-h-[36px] px-2.5 2xl:px-3 py-1 text-[#DC2626] bg-red-50 hover:bg-red-100 border border-red-200 rounded-[2px] font-medium transition-all"
           >
-            <X className="w-3.5 h-3.5" />
+            <X className="w-3.5 2xl:w-4 h-3.5 2xl:h-4" />
             Batal Edit
           </button>
         )}
       </div>
 
-      <form onSubmit={handleSubmit} className="p-4 space-y-4">
+      <form onSubmit={handleSubmit} className="p-4 2xl:p-6 3xl:p-7 space-y-4 2xl:space-y-6">
         {/* Error Alert */}
         {validationError && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-xs px-3.5 py-2.5 rounded-[2px] flex items-center gap-2">
-            <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
+          <div className="bg-red-50 border border-red-200 text-red-700 text-xs 2xl:text-sm px-3.5 2xl:px-4 py-2.5 2xl:py-3 rounded-[2px] flex items-center gap-2">
+            <AlertCircle className="w-4 2xl:w-5 h-4 2xl:h-5 shrink-0 text-red-600" />
             <span className="font-medium">{validationError}</span>
           </div>
         )}
 
         {/* ── ROW 1: Kurir Selection & Tanggal ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 2xl:gap-5">
           {/* Kurir selector */}
           <div>
-            <label className="block text-xs font-semibold text-[#334155] mb-1">
+            <label className="block text-xs 2xl:text-sm font-semibold text-[#334155] mb-1 2xl:mb-1.5">
               Pilihan Kurir <span className="text-red-500">*</span>
             </label>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-2 2xl:gap-3">
               <button
                 type="button"
                 id="entry-courier-jt"
                 onClick={() => setCourier('JT')}
-                className={`min-h-[44px] px-3 text-xs font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
+                className={`min-h-[44px] 2xl:min-h-[48px] px-3 2xl:px-4 text-xs 2xl:text-sm font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
                   courier === 'JT'
                     ? 'bg-[#FEF2F2] text-[#991B1B] border-[#EF4444]'
                     : 'bg-white text-[#475569] border-[#D5D9E0] hover:bg-[#F8FAFC]'
@@ -256,7 +256,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
                 type="button"
                 id="entry-courier-jne"
                 onClick={() => setCourier('JNE')}
-                className={`min-h-[44px] px-3 text-xs font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
+                className={`min-h-[44px] 2xl:min-h-[48px] px-3 2xl:px-4 text-xs 2xl:text-sm font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
                   courier === 'JNE'
                     ? 'bg-[#EFF6FF] text-[#1E40AF] border-[#3B82F6]'
                     : 'bg-white text-[#475569] border-[#D5D9E0] hover:bg-[#F8FAFC]'

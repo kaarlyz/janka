@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1920px',
+        '4k': '2560px',
+      },
       colors: {
         nexus: {
           bg: '#000000',
