@@ -9,8 +9,6 @@ import {
   Copy,
   Check,
   MessageSquare,
-  PackageOpen,
-  SearchX,
 } from 'lucide-react';
 import { ShipmentEntry, SortConfig, SortField } from '../types';
 import { formatRupiah, formatDateDDMMYYYY, formatWeight } from '../lib/formatters';
@@ -25,6 +23,51 @@ interface LedgerTableProps {
   onPrint: (entry: ShipmentEntry) => void;
   onSendWhatsApp: (entry: ShipmentEntry) => void;
   onResetFilter: () => void;
+}
+
+// Custom SVG Line-Art Ilustrasi Paket Kosong (Ledger Kosong)
+function EmptyLedgerBoxSvg() {
+  return (
+    <svg
+      className="w-16 h-16 text-[#334155] mb-2"
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 22L32 12L52 22V44L32 54L12 44V22Z" />
+      <path d="M32 12V32" />
+      <path d="M12 22L32 32L52 22" />
+      <path d="M22 17L42 27" strokeDasharray="2 2" />
+      <path d="M32 32V54" />
+      <path d="M20 39H44" />
+    </svg>
+  );
+}
+
+// Custom SVG Line-Art Ilustrasi Hasil Filter Kosong
+function EmptyFilterBoxSvg() {
+  return (
+    <svg
+      className="w-16 h-16 text-[#334155] mb-2"
+      viewBox="0 0 64 64"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M10 20L28 11L46 20V40L28 49L10 40V20Z" />
+      <path d="M28 11V29" />
+      <path d="M10 20L28 29L46 20" />
+      <circle cx="44" cy="44" r="9" fill="#FFFFFF" />
+      <circle cx="44" cy="44" r="9" />
+      <path d="M50 50L57 57" strokeWidth="2" />
+      <path d="M40 44H48" />
+    </svg>
+  );
 }
 
 export const LedgerTable: React.FC<LedgerTableProps> = ({
@@ -49,13 +92,13 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
   const renderSortIndicator = (field: SortField) => {
     if (sortConfig.field !== field) {
       return (
-        <ArrowUpDown className="w-3 h-3 text-[#9CA3AF] opacity-50 group-hover:opacity-100 transition-opacity ml-1 inline-block" />
+        <ArrowUpDown className="w-3 h-3 text-[#475569] opacity-60 group-hover:opacity-100 transition-opacity ml-1 inline-block" />
       );
     }
     return sortConfig.order === 'asc' ? (
-      <ArrowUp className="w-3 h-3 text-[#1E293B] ml-1 inline-block" />
+      <ArrowUp className="w-3 h-3 text-[#0F172A] ml-1 inline-block" />
     ) : (
-      <ArrowDown className="w-3 h-3 text-[#1E293B] ml-1 inline-block" />
+      <ArrowDown className="w-3 h-3 text-[#0F172A] ml-1 inline-block" />
     );
   };
 
@@ -69,67 +112,78 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
       <div className="overflow-x-auto">
         <table className="w-full text-left text-xs border-collapse">
           <thead>
-            <tr className="bg-[#F8FAFC] text-[#475569] font-semibold border-b border-[#D5D9E0] text-[10px] uppercase tracking-wider">
-              <th className="py-2 px-2 w-8 text-center text-[#64748B]">No.</th>
+            <tr className="bg-[#F8FAFC] text-[#334155] font-semibold border-b border-[#D5D9E0] text-[10px] uppercase tracking-wider">
+              <th className="py-2.5 px-2 w-8 text-center text-[#475569]">No.</th>
               <th
                 onClick={() => onSort('date')}
-                className="py-2 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
+                className="py-2.5 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
               >
                 Tanggal {renderSortIndicator('date')}
               </th>
               <th
                 onClick={() => onSort('resiNumber')}
-                className="py-2 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
+                className="py-2.5 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
               >
                 No. Resi {renderSortIndicator('resiNumber')}
               </th>
               <th
                 onClick={() => onSort('senderName')}
-                className="py-2 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors"
+                className="py-2.5 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors"
               >
                 Nama Pengirim {renderSortIndicator('senderName')}
               </th>
               <th
                 onClick={() => onSort('receiverName')}
-                className="py-2 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors max-w-[140px]"
+                className="py-2.5 px-2.5 cursor-pointer select-none hover:text-[#0F172A] transition-colors max-w-[140px]"
               >
                 Penerima {renderSortIndicator('receiverName')}
               </th>
-              <th className="py-2 px-2 text-center whitespace-nowrap">Jenis Paket</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">Jenis Paket</th>
               <th
                 onClick={() => onSort('amount')}
-                className="py-2 px-2.5 text-right cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
+                className="py-2.5 px-2.5 text-right cursor-pointer select-none hover:text-[#0F172A] transition-colors whitespace-nowrap"
               >
                 Jumlah (Rp) {renderSortIndicator('amount')}
               </th>
-              <th className="py-2 px-2 text-center whitespace-nowrap">Jenis Transaksi</th>
-              <th className="py-2 px-2 text-center w-28">Aksi</th>
+              <th className="py-2.5 px-2 text-center whitespace-nowrap">Jenis Transaksi</th>
+              <th className="py-2.5 px-2 text-center w-28">Aksi</th>
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-[#E5E7EB]">
+          <tbody className="divide-y divide-[#E2E8F0]">
             {shipments.length === 0 ? (
               <tr>
-                <td colSpan={9} className="py-10 px-4 text-center">
+                <td colSpan={9} className="py-12 px-4 text-center">
                   {allShipmentsCount === 0 ? (
-                    <div className="flex flex-col items-center justify-center space-y-1.5 text-[#64748B]">
-                      <PackageOpen className="w-7 h-7 text-[#94A3B8]" />
-                      <p className="font-medium text-xs text-[#334155]">Belum ada manifest tercatat</p>
-                      <p className="text-[11px] text-[#64748B]">
-                        Gunakan stasiun input di sebelah kiri untuk mencatat pengiriman pertama.
+                    <div className="flex flex-col items-center justify-center space-y-2 text-[#475569]">
+                      <EmptyLedgerBoxSvg />
+                      <p className="font-bold text-sm text-[#0F172A]">Belum ada manifest tercatat</p>
+                      <p className="text-xs text-[#475569] max-w-sm leading-relaxed">
+                        Buku besar kas reguler masih kosong. Gunakan stasiun input manifest di panel sebelah kiri untuk mencatat pengiriman pertama.
                       </p>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const el = document.getElementById('entry-date');
+                          if (el) el.focus();
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="btn-hover-lift mt-2 px-4 py-2 bg-[#0F172A] hover:bg-[#1E293B] text-white border border-[#0F172A] rounded-[2px] text-xs font-bold shadow-sm transition-all duration-[120ms]"
+                      >
+                        Catat Manifest Pertama
+                      </button>
                     </div>
                   ) : (
-                    <div className="flex flex-col items-center justify-center space-y-1.5 text-[#64748B]">
-                      <SearchX className="w-7 h-7 text-[#94A3B8]" />
-                      <p className="font-medium text-xs text-[#334155]">Tidak ada entri yang cocok</p>
-                      <p className="text-[11px] text-[#64748B]">
-                        Tidak ditemukan manifest dengan kriteria pencarian saat ini.
+                    <div className="flex flex-col items-center justify-center space-y-2 text-[#475569]">
+                      <EmptyFilterBoxSvg />
+                      <p className="font-bold text-sm text-[#0F172A]">Tidak ada entri yang cocok</p>
+                      <p className="text-xs text-[#475569] max-w-sm leading-relaxed">
+                        Pencarian atau kriteria filter tanggal/kurir saat ini tidak menemukan data manifest.
                       </p>
                       <button
                         type="button"
                         onClick={onResetFilter}
-                        className="mt-1 px-2.5 py-0.5 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#334155] border border-[#CBD5E1] rounded-[2px] text-[11px] font-medium transition-colors"
+                        className="btn-hover-lift mt-2 px-4 py-1.5 bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] rounded-[2px] text-xs font-bold transition-all duration-[120ms]"
                       >
                         Reset Kriteria Filter
                       </button>
@@ -147,23 +201,26 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
                 const isDfod = entry.serviceType.toUpperCase().includes('DFOD');
 
                 return (
-                  <tr key={entry.id} className="hover:bg-[#F8FAFC] transition-colors group text-[#1E293B]">
+                  <tr
+                    key={entry.id}
+                    className="row-hover-lift hover:bg-[#F8FAFC] transition-all duration-[120ms] group text-[#0F172A]"
+                  >
                     {/* Index */}
-                    <td className="py-1.5 px-2 text-center text-[#64748B] font-mono text-[10px]">{idx + 1}</td>
+                    <td className="py-2.5 px-2 text-center text-[#475569] font-mono text-[10px]">{idx + 1}</td>
 
                     {/* Date dd/mm/yyyy */}
-                    <td className="py-1.5 px-2.5 whitespace-nowrap text-[#334155] font-mono text-[11px]">
+                    <td className="py-2.5 px-2.5 whitespace-nowrap text-[#334155] font-mono text-[11px]">
                       {formatDateDDMMYYYY(entry.date, entry.createdAt)}
                     </td>
 
                     {/* Resi */}
-                    <td className="py-1.5 px-2.5 whitespace-nowrap">
+                    <td className="py-2.5 px-2.5 whitespace-nowrap">
                       <div className="flex items-center gap-1 font-mono text-xs font-semibold text-[#0F172A]">
                         <span>{entry.resiNumber}</span>
                         <button
                           type="button"
                           onClick={() => handleCopyResi(entry.resiNumber)}
-                          className="text-[#94A3B8] hover:text-[#0F172A] p-0.5 rounded transition-colors"
+                          className="btn-hover-lift text-[#475569] hover:text-[#0F172A] p-0.5 rounded transition-colors"
                           title="Salin No. Resi"
                         >
                           {copiedResi === entry.resiNumber ? (
@@ -176,19 +233,19 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
                     </td>
 
                     {/* Sender */}
-                    <td className="py-1.5 px-2.5">
-                      <div className="font-medium text-[#0F172A] leading-tight text-xs">{entry.senderName}</div>
+                    <td className="py-2.5 px-2.5">
+                      <div className="font-semibold text-[#0F172A] leading-tight text-xs">{entry.senderName}</div>
                     </td>
 
-                    {/* Receiver (Compacted for 2K layout) */}
-                    <td className="py-1.5 px-2.5 max-w-[140px]">
+                    {/* Receiver */}
+                    <td className="py-2.5 px-2.5 max-w-[140px]">
                       <div className="font-medium text-[#334155] truncate text-[11px]" title={entry.receiverName}>
                         {entry.receiverName || '-'}
                       </div>
                     </td>
 
                     {/* Service Type / Jenis Paket */}
-                    <td className="py-1.5 px-2 text-center whitespace-nowrap">
+                    <td className="py-2.5 px-2 text-center whitespace-nowrap">
                       <span
                         className={`inline-block px-1.5 py-0.5 text-[10px] font-semibold border rounded-[2px] ${
                           isDfod
@@ -203,51 +260,51 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
                     </td>
 
                     {/* Amount */}
-                    <td className="py-1.5 px-2.5 text-right font-mono font-bold text-[#0F172A] text-xs">
+                    <td className="py-2.5 px-2.5 text-right font-mono font-bold text-[#0F172A] text-xs">
                       {formatRupiah(entry.amount)}
                     </td>
 
                     {/* Payment Type / Jenis Transaksi */}
-                    <td className="py-1.5 px-2 text-center whitespace-nowrap font-mono text-[10px] font-semibold text-[#475569]">
-                      <span className="px-1.5 py-0.5 bg-[#F1F5F9] border border-[#E2E8F0] rounded-[2px]">
+                    <td className="py-2.5 px-2 text-center whitespace-nowrap font-mono text-[10px] font-semibold text-[#334155]">
+                      <span className="px-1.5 py-0.5 bg-[#F1F5F9] border border-[#CBD5E1] rounded-[2px]">
                         {entry.paymentType || 'CASH'}
                       </span>
                     </td>
 
                     {/* Actions */}
-                    <td className="py-1.5 px-2 text-center whitespace-nowrap">
-                      <div className="inline-flex items-center gap-0.5">
+                    <td className="py-2.5 px-2 text-center whitespace-nowrap">
+                      <div className="inline-flex items-center gap-1">
                         <button
                           type="button"
                           onClick={() => onSendWhatsApp(entry)}
-                          className="p-1 text-[#475569] hover:text-[#16A34A] hover:bg-[#F0FDF4] border border-transparent hover:border-[#BBF7D0] rounded-[2px] transition-colors"
+                          className="btn-hover-lift p-1.5 text-[#334155] hover:text-[#16A34A] hover:bg-[#F0FDF4] border border-transparent hover:border-[#BBF7D0] rounded-[2px] transition-all duration-[120ms]"
                           title="Kirim WA Notifikasi"
                         >
-                          <MessageSquare className="w-3 h-3" />
+                          <MessageSquare className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={() => onPrint(entry)}
-                          className="p-1 text-[#475569] hover:text-[#1E293B] hover:bg-[#F1F5F9] border border-transparent hover:border-[#CBD5E1] rounded-[2px] transition-colors"
+                          className="btn-hover-lift p-1.5 text-[#334155] hover:text-[#0F172A] hover:bg-[#F1F5F9] border border-transparent hover:border-[#CBD5E1] rounded-[2px] transition-all duration-[120ms]"
                           title="Cetak Label Thermal"
                         >
-                          <Printer className="w-3 h-3" />
+                          <Printer className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={() => onEdit(entry)}
-                          className="p-1 text-[#475569] hover:text-[#2563EB] hover:bg-[#EFF6FF] border border-transparent hover:border-[#BFDBFE] rounded-[2px] transition-colors"
+                          className="btn-hover-lift p-1.5 text-[#334155] hover:text-[#2563EB] hover:bg-[#EFF6FF] border border-transparent hover:border-[#BFDBFE] rounded-[2px] transition-all duration-[120ms]"
                           title="Edit Manifest"
                         >
-                          <Edit2 className="w-3 h-3" />
+                          <Edit2 className="w-3.5 h-3.5" />
                         </button>
                         <button
                           type="button"
                           onClick={() => onDelete(entry)}
-                          className="p-1 text-[#475569] hover:text-[#DC2626] hover:bg-[#FEF2F2] border border-transparent hover:border-[#FECACA] rounded-[2px] transition-colors"
+                          className="btn-hover-lift p-1.5 text-[#334155] hover:text-[#DC2626] hover:bg-[#FEF2F2] border border-transparent hover:border-[#FECACA] rounded-[2px] transition-all duration-[120ms]"
                           title="Hapus Manifest"
                         >
-                          <Trash2 className="w-3 h-3" />
+                          <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       </div>
                     </td>
@@ -261,11 +318,11 @@ export const LedgerTable: React.FC<LedgerTableProps> = ({
           {shipments.length > 0 && (
             <tfoot>
               <tr className="bg-[#F8FAFC] border-t-2 border-[#CBD5E1] text-[#0F172A] font-medium text-xs">
-                <td colSpan={5} className="py-2 px-2.5 font-bold text-right text-[11px]">
+                <td colSpan={5} className="py-2.5 px-2.5 font-bold text-right text-[11px]">
                   SUBTOTAL ({shipments.length} Paket | {formatWeight(displayedWeight)}):
                 </td>
                 <td></td>
-                <td className="py-2 px-2.5 text-right font-mono font-bold text-[#0F172A] text-xs">
+                <td className="py-2.5 px-2.5 text-right font-mono font-bold text-[#0F172A] text-xs">
                   {formatRupiah(displayedAmount)}
                 </td>
                 <td colSpan={2}></td>

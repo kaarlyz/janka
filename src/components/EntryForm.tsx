@@ -201,11 +201,11 @@ export const EntryForm: React.FC<EntryFormProps> = ({
   };
 
   return (
-    <div className="bg-white border border-[#D5D9E0] rounded-[3px] shadow-sm overflow-hidden">
+    <div id="entry-form-container" className="bg-white border border-[#D5D9E0] rounded-[3px] shadow-sm overflow-hidden">
       {/* Header Form */}
-      <div className="bg-[#F8FAFC] border-b border-[#D5D9E0] px-4 py-2.5 flex items-center justify-between">
+      <div className="bg-[#F8FAFC] border-b border-[#D5D9E0] px-4 py-3 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Truck className="w-4 h-4 text-[#1E293B]" />
+          <Truck className="w-4 h-4 text-[#0F172A]" />
           <h2 className="text-xs font-bold text-[#0F172A] uppercase tracking-wider">
             {editingEntry ? `Edit Manifest: ${editingEntry.resiNumber}` : 'Stasiun Input Manifest Kas Reguler'}
           </h2>
@@ -214,9 +214,9 @@ export const EntryForm: React.FC<EntryFormProps> = ({
           <button
             type="button"
             onClick={onCancelEdit}
-            className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 text-[#DC2626] bg-red-50 hover:bg-red-100 border border-red-200 rounded-[2px] font-medium transition-colors"
+            className="btn-hover-lift inline-flex items-center gap-1 text-[11px] min-h-[32px] px-2.5 py-1 text-[#DC2626] bg-red-50 hover:bg-red-100 border border-red-200 rounded-[2px] font-medium transition-all"
           >
-            <X className="w-3 h-3" />
+            <X className="w-3.5 h-3.5" />
             Batal Edit
           </button>
         )}
@@ -225,9 +225,9 @@ export const EntryForm: React.FC<EntryFormProps> = ({
       <form onSubmit={handleSubmit} className="p-4 space-y-4">
         {/* Error Alert */}
         {validationError && (
-          <div className="bg-red-50 border border-red-200 text-red-700 text-xs px-3 py-2 rounded-[2px] flex items-center gap-2">
+          <div className="bg-red-50 border border-red-200 text-red-700 text-xs px-3.5 py-2.5 rounded-[2px] flex items-center gap-2">
             <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
-            <span>{validationError}</span>
+            <span className="font-medium">{validationError}</span>
           </div>
         )}
 
@@ -235,17 +235,18 @@ export const EntryForm: React.FC<EntryFormProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Kurir selector */}
           <div>
-            <label className="block text-[11px] font-medium text-[#475569] mb-1">
+            <label className="block text-xs font-semibold text-[#334155] mb-1">
               Pilihan Kurir <span className="text-red-500">*</span>
             </label>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
+                id="entry-courier-jt"
                 onClick={() => setCourier('JT')}
-                className={`py-1.5 px-3 text-xs font-bold border rounded-[2px] transition-colors flex items-center justify-center gap-1.5 ${
+                className={`min-h-[44px] px-3 text-xs font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
                   courier === 'JT'
                     ? 'bg-[#FEF2F2] text-[#991B1B] border-[#EF4444]'
-                    : 'bg-white text-[#64748B] border-[#D5D9E0] hover:bg-[#F8FAFC]'
+                    : 'bg-white text-[#475569] border-[#D5D9E0] hover:bg-[#F8FAFC]'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-[#EF4444]" />
@@ -253,11 +254,12 @@ export const EntryForm: React.FC<EntryFormProps> = ({
               </button>
               <button
                 type="button"
+                id="entry-courier-jne"
                 onClick={() => setCourier('JNE')}
-                className={`py-1.5 px-3 text-xs font-bold border rounded-[2px] transition-colors flex items-center justify-center gap-1.5 ${
+                className={`min-h-[44px] px-3 text-xs font-bold border rounded-[2px] transition-all flex items-center justify-center gap-1.5 btn-hover-lift ${
                   courier === 'JNE'
                     ? 'bg-[#EFF6FF] text-[#1E40AF] border-[#3B82F6]'
-                    : 'bg-white text-[#64748B] border-[#D5D9E0] hover:bg-[#F8FAFC]'
+                    : 'bg-white text-[#475569] border-[#D5D9E0] hover:bg-[#F8FAFC]'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-[#3B82F6]" />
@@ -268,17 +270,18 @@ export const EntryForm: React.FC<EntryFormProps> = ({
 
           {/* Tanggal Entri */}
           <div>
-            <label className="block text-[11px] font-medium text-[#475569] mb-1">
+            <label htmlFor="entry-date" className="block text-xs font-semibold text-[#334155] mb-1">
               Tanggal Transaksi <span className="text-red-500">*</span>
             </label>
             <div className="relative">
-              <Calendar className="w-3.5 h-3.5 text-[#64748B] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Calendar className="w-4 h-4 text-[#475569] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
+                id="entry-date"
                 type="date"
                 value={dateIso}
                 onChange={(e) => setDateIso(e.target.value)}
                 required
-                className="w-full pl-8 pr-2.5 py-1.5 text-xs font-mono bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#1E293B] focus:outline-none"
+                className="w-full min-h-[44px] pl-9 pr-3 py-2 text-xs font-mono bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors"
               />
             </div>
           </div>
@@ -287,21 +290,22 @@ export const EntryForm: React.FC<EntryFormProps> = ({
         {/* ── ROW 2: Pengirim & Buku Alamat ── */}
         <div className="relative">
           <div className="flex items-center justify-between mb-1">
-            <label className="text-[11px] font-medium text-[#475569]">
+            <label htmlFor="entry-sender-name" className="text-xs font-semibold text-[#334155]">
               Nama Pengirim (Seller / Subgudang) <span className="text-red-500">*</span>
             </label>
             {addressBook.length > 0 && (
               <button
                 type="button"
                 onClick={() => setIsSenderDropdownOpen(!isSenderDropdownOpen)}
-                className="text-[11px] text-[#2563EB] hover:underline inline-flex items-center gap-1"
+                className="btn-hover-lift text-xs text-[#2563EB] hover:underline inline-flex items-center gap-1 py-1"
               >
-                <BookUser className="w-3 h-3" />
+                <BookUser className="w-3.5 h-3.5" />
                 Buku Alamat ({addressBook.length})
               </button>
             )}
           </div>
           <input
+            id="entry-sender-name"
             type="text"
             value={senderName}
             onChange={(e) => {
@@ -310,7 +314,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
             }}
             placeholder="Contoh: Gudang Pusat Jakarta / Official Store"
             required
-            className="w-full px-2.5 py-1.5 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#1E293B] focus:outline-none"
+            className="w-full min-h-[44px] px-3 py-2 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors"
           />
 
           {/* Address Book Dropdown */}
@@ -325,10 +329,10 @@ export const EntryForm: React.FC<EntryFormProps> = ({
                     if (item.address) setSenderAddress(item.address);
                     setIsSenderDropdownOpen(false);
                   }}
-                  className="w-full text-left px-3 py-2 text-xs hover:bg-[#F8FAFC] transition-colors"
+                  className="w-full text-left min-h-[44px] px-3 py-2 text-xs hover:bg-[#F8FAFC] transition-colors"
                 >
-                  <div className="font-medium text-[#0F172A]">{item.name}</div>
-                  {item.address && <div className="text-[11px] text-[#64748B] truncate">{item.address}</div>}
+                  <div className="font-bold text-[#0F172A]">{item.name}</div>
+                  {item.address && <div className="text-[11px] text-[#475569] truncate">{item.address}</div>}
                 </button>
               ))}
             </div>
@@ -339,15 +343,16 @@ export const EntryForm: React.FC<EntryFormProps> = ({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Jenis Paket */}
           <div>
-            <label className="block text-[11px] font-medium text-[#475569] mb-1">
+            <label htmlFor="entry-service-type" className="block text-xs font-semibold text-[#334155] mb-1">
               Jenis Paket (Service Type)
             </label>
             <div className="relative">
-              <Tag className="w-3.5 h-3.5 text-[#64748B] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Tag className="w-4 h-4 text-[#475569] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <select
+                id="entry-service-type"
                 value={serviceType}
                 onChange={(e) => setServiceType(e.target.value)}
-                className="w-full pl-8 pr-2.5 py-1.5 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#1E293B] focus:outline-none"
+                className="w-full min-h-[44px] pl-9 pr-3 py-2 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors"
               >
                 <option value="REGULER">REGULER</option>
                 <option value="REGULER (DFOD)">REGULER (DFOD)</option>
@@ -357,15 +362,16 @@ export const EntryForm: React.FC<EntryFormProps> = ({
 
           {/* Jenis Transaksi */}
           <div>
-            <label className="block text-[11px] font-medium text-[#475569] mb-1">
+            <label htmlFor="entry-payment-type" className="block text-xs font-semibold text-[#334155] mb-1">
               Jenis Transaksi (Payment Channel)
             </label>
             <div className="relative">
-              <CreditCard className="w-3.5 h-3.5 text-[#64748B] absolute left-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <CreditCard className="w-4 h-4 text-[#475569] absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <select
+                id="entry-payment-type"
                 value={paymentType}
                 onChange={(e) => setPaymentType(e.target.value)}
-                className="w-full pl-8 pr-2.5 py-1.5 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#1E293B] focus:outline-none"
+                className="w-full min-h-[44px] pl-9 pr-3 py-2 text-xs bg-[#F9FAFB] border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:bg-white focus:border-[#0F172A] focus:outline-none transition-colors"
               >
                 <option value="CASH">CASH</option>
                 <option value="BCA">BCA</option>
@@ -377,36 +383,37 @@ export const EntryForm: React.FC<EntryFormProps> = ({
         </div>
 
         {/* ── ROW 4: Berat & Calculator Ongkir ── */}
-        <div className="bg-[#F8FAFC] border border-[#E2E8F0] p-3 rounded-[2px] space-y-3">
+        <div className="bg-[#F8FAFC] border border-[#E2E8F0] p-3.5 rounded-[2px] space-y-3">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
             <div>
-              <label className="block text-[11px] font-medium text-[#475569] mb-1">
+              <label htmlFor="entry-weight" className="block text-xs font-semibold text-[#334155] mb-1">
                 Berat Paket (kg) <span className="text-red-500">*</span>
               </label>
               <input
+                id="entry-weight"
                 type="number"
                 step="0.1"
                 min="0.1"
                 value={weight}
                 onChange={(e) => setWeight(e.target.value)}
                 required
-                className="w-full px-2.5 py-1.5 text-xs font-mono bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#1E293B] focus:outline-none"
+                className="w-full min-h-[44px] px-3 py-2 text-xs font-mono bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#0F172A] focus:outline-none transition-colors"
               />
-              <span className="text-[10px] text-[#64748B]">
+              <span className="text-[11px] text-[#475569] mt-1 block">
                 Tarif {courier}: Rp{formatRupiah(rates[courier])}/kg (Dibulatkan ke atas)
               </span>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-[11px] font-medium text-[#475569]">Nominal Biaya (Rp)</label>
+                <label htmlFor="entry-manual-amount" className="text-xs font-semibold text-[#334155]">Nominal Biaya (Rp)</label>
                 <button
                   type="button"
                   onClick={() => {
                     setIsManualAmount(!isManualAmount);
                     if (!isManualAmount) setManualAmountStr(String(autoOngkir));
                   }}
-                  className="text-[10px] text-[#2563EB] hover:underline"
+                  className="btn-hover-lift text-xs text-[#2563EB] hover:underline"
                 >
                   {isManualAmount ? 'Gunakan Otomatis' : 'Override Manual'}
                 </button>
@@ -414,16 +421,17 @@ export const EntryForm: React.FC<EntryFormProps> = ({
 
               {isManualAmount ? (
                 <input
+                  id="entry-manual-amount"
                   type="number"
                   value={manualAmountStr}
                   onChange={(e) => setManualAmountStr(e.target.value)}
                   placeholder="Isi biaya manual..."
-                  className="w-full px-2.5 py-1.5 text-xs font-mono font-bold bg-white border border-[#3B82F6] rounded-[2px] text-[#0F172A] focus:outline-none"
+                  className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-white border border-[#2563EB] rounded-[2px] text-[#0F172A] focus:outline-none"
                 />
               ) : (
-                <div className="w-full px-2.5 py-1.5 text-xs font-mono font-bold bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] text-[#0F172A] flex justify-between items-center">
+                <div className="w-full min-h-[44px] px-3 py-2 text-xs font-mono font-bold bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] text-[#0F172A] flex justify-between items-center">
                   <span>{formatRupiah(effectiveAmount)}</span>
-                  <span className="text-[10px] text-[#64748B] font-normal">Otomatis</span>
+                  <span className="text-[10px] text-[#475569] font-normal">Otomatis</span>
                 </div>
               )}
             </div>
@@ -435,66 +443,69 @@ export const EntryForm: React.FC<EntryFormProps> = ({
           <button
             type="button"
             onClick={() => setIsLabelSectionOpen(!isLabelSectionOpen)}
-            className="w-full bg-[#F1F5F9] hover:bg-[#E2E8F0] px-3 py-2 flex items-center justify-between text-left transition-colors"
+            className="w-full min-h-[44px] bg-[#F1F5F9] hover:bg-[#E2E8F0] px-3.5 py-2.5 flex items-center justify-between text-left transition-colors"
           >
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-[#1E293B]">
+              <span className="text-xs font-bold text-[#0F172A]">
                 DATA LABEL (untuk cetak resi)
               </span>
-              <span className="text-[10px] bg-[#E2E8F0] text-[#475569] px-1.5 py-0.5 rounded-[2px] border border-[#CBD5E1]">
+              <span className="text-[10px] bg-[#E2E8F0] text-[#334155] px-1.5 py-0.5 rounded-[2px] border border-[#CBD5E1]">
                 Cetak Thermal Label 100x150mm
               </span>
             </div>
             {isLabelSectionOpen ? (
-              <ChevronUp className="w-4 h-4 text-[#64748B]" />
+              <ChevronUp className="w-4 h-4 text-[#475569]" />
             ) : (
-              <ChevronDown className="w-4 h-4 text-[#64748B]" />
+              <ChevronDown className="w-4 h-4 text-[#475569]" />
             )}
           </button>
 
           {isLabelSectionOpen && (
-            <div className="p-3 space-y-3 bg-[#FAFAFA] border-t border-[#CBD5E1]">
+            <div className="p-3.5 space-y-3 bg-[#FAFAFA] border-t border-[#CBD5E1]">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* Receiver Name */}
                 <div>
-                  <label className="block text-[11px] font-medium text-[#475569] mb-1">
+                  <label htmlFor="entry-receiver-name" className="block text-xs font-semibold text-[#334155] mb-1">
                     Nama Penerima
                   </label>
                   <input
+                    id="entry-receiver-name"
                     type="text"
                     value={receiverName}
                     onChange={(e) => setReceiverName(e.target.value)}
                     placeholder="Nama penerima paket (opsional)"
-                    className="w-full px-2.5 py-1.5 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#1E293B] focus:outline-none"
+                    className="w-full min-h-[44px] px-3 py-2 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#0F172A] focus:outline-none transition-colors"
                   />
                 </div>
 
                 {/* Receiver Address */}
                 <div>
-                  <label className="block text-[11px] font-medium text-[#475569] mb-1">
+                  <label htmlFor="entry-receiver-address" className="block text-xs font-semibold text-[#334155] mb-1">
                     Alamat Penerima
                   </label>
                   <input
+                    id="entry-receiver-address"
                     type="text"
                     value={receiverAddress}
                     onChange={(e) => setReceiverAddress(e.target.value)}
                     placeholder="Kota / Alamat tujuan"
-                    className="w-full px-2.5 py-1.5 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#1E293B] focus:outline-none"
+                    className="w-full min-h-[44px] px-3 py-2 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#0F172A] focus:outline-none transition-colors"
                   />
                 </div>
               </div>
 
               {/* Sender Address */}
               <div>
-                <label className="block text-[11px] font-medium text-[#475569] mb-1">
+                <label htmlFor="entry-sender-address" className="block text-xs font-semibold text-[#334155] mb-1">
                   Alamat Pengirim Detail
                 </label>
                 <input
+                  id="entry-sender-address"
                   type="text"
                   value={senderAddress}
                   onChange={(e) => setSenderAddress(e.target.value)}
                   placeholder="Alamat asal pengiriman..."
-                  className="w-full px-2.5 py-1.5 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#1E293B] focus:outline-none"
+                  className="w-full min-h-[44px] px-3 py-2 text-xs bg-white border border-[#D5D9E0] rounded-[2px] text-[#0F172A] focus:border-[#0F172A] focus:outline-none transition-colors"
                 />
               </div>
             </div>
@@ -502,12 +513,12 @@ export const EntryForm: React.FC<EntryFormProps> = ({
         </div>
 
         {/* Submit Actions */}
-        <div className="flex items-center justify-end gap-2 pt-2 border-t border-[#E5E7EB]">
+        <div className="flex items-center justify-end gap-2 pt-3 border-t border-[#E5E7EB]">
           {editingEntry && (
             <button
               type="button"
               onClick={onCancelEdit}
-              className="px-3 py-1.5 text-xs font-medium text-[#475569] bg-[#F1F5F9] hover:bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] transition-colors"
+              className="btn-hover-lift min-h-[44px] px-4 py-2 text-xs font-medium text-[#334155] bg-[#F1F5F9] hover:bg-[#E2E8F0] border border-[#CBD5E1] rounded-[2px] transition-all duration-[120ms]"
             >
               Batal
             </button>
@@ -516,9 +527,9 @@ export const EntryForm: React.FC<EntryFormProps> = ({
           <button
             type="submit"
             disabled={isLoading}
-            className="px-4 py-1.5 text-xs font-bold text-white bg-[#1E293B] hover:bg-[#0F172A] disabled:bg-[#94A3B8] border border-[#0F172A] rounded-[2px] shadow-sm transition-colors inline-flex items-center gap-1.5"
+            className="btn-hover-lift min-h-[44px] px-5 py-2 text-xs font-bold text-white bg-[#0F172A] hover:bg-[#1E293B] disabled:bg-[#94A3B8] border border-[#0F172A] rounded-[2px] shadow-sm transition-all duration-[120ms] inline-flex items-center gap-2 cursor-pointer"
           >
-            {editingEntry ? <Edit3 className="w-3.5 h-3.5" /> : <Check className="w-3.5 h-3.5" />}
+            {editingEntry ? <Edit3 className="w-4 h-4" /> : <Check className="w-4 h-4" />}
             {editingEntry ? 'Simpan Perubahan' : 'Catat Manifest Baru'}
           </button>
         </div>
@@ -526,7 +537,7 @@ export const EntryForm: React.FC<EntryFormProps> = ({
 
       {/* Quick Action bar for last logged entry */}
       {lastLoggedEntry && !editingEntry && (
-        <div className="bg-[#F0FDF4] border-t border-[#BBF7D0] px-4 py-2 flex items-center justify-between text-xs text-[#166534]">
+        <div className="bg-[#F0FDF4] border-t border-[#BBF7D0] px-4 py-2.5 flex items-center justify-between text-xs text-[#166534]">
           <div className="flex items-center gap-1.5">
             <Check className="w-4 h-4 text-[#16A34A]" />
             <span>
@@ -538,17 +549,17 @@ export const EntryForm: React.FC<EntryFormProps> = ({
             <button
               type="button"
               onClick={() => onSendWhatsApp(lastLoggedEntry)}
-              className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 bg-white border border-[#BBF7D0] hover:bg-[#DCFCE7] text-[#15803D] rounded-[2px] transition-colors"
+              className="btn-hover-lift inline-flex items-center gap-1 text-[11px] font-medium min-h-[36px] px-2.5 py-1 bg-white border border-[#BBF7D0] hover:bg-[#DCFCE7] text-[#15803D] rounded-[2px] transition-all"
             >
-              <MessageCircle className="w-3 h-3" />
+              <MessageCircle className="w-3.5 h-3.5" />
               Kirim WA
             </button>
             <button
               type="button"
               onClick={() => onPrintLabel(lastLoggedEntry)}
-              className="inline-flex items-center gap-1 text-[11px] font-medium px-2 py-0.5 bg-[#166534] text-white hover:bg-[#14532D] rounded-[2px] transition-colors"
+              className="btn-hover-lift inline-flex items-center gap-1 text-[11px] font-bold min-h-[36px] px-2.5 py-1 bg-[#166534] text-white hover:bg-[#14532D] rounded-[2px] transition-all"
             >
-              <Printer className="w-3 h-3" />
+              <Printer className="w-3.5 h-3.5" />
               Cetak Thermal Label
             </button>
           </div>

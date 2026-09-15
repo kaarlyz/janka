@@ -1,127 +1,143 @@
-# JANKA — Petty Cash & Manifest Logistik
+# 📦 JANKA — Logistics Petty Cash & Manifest Ledger System
 
-![Stack](https://img.shields.io/badge/react-18-61DAFB?logo=react&logoColor=white)
-![Vite](https://img.shields.io/badge/vite-5-646CFF?logo=vite&logoColor=white)
-![Tailwind](https://img.shields.io/badge/tailwind-3-06B6D4?logo=tailwindcss&logoColor=white)
-![TypeScript](https://img.shields.io/badge/typescript-5-3178C6?logo=typescript&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
+<div align="center">
 
-JANKA adalah aplikasi web untuk operasional petty cash pengiriman paket harian:
-mencatat manifest, mencetak resi thermal, merekonsiliasi laporan kurir, dan
-menghasilkan arsip Excel yang siap audit.
+![JANKA Banner](https://img.shields.io/badge/JANKA-Logistics_Petty_Cash-0F172A?style=for-the-badge&logo=package&logoColor=white)
 
-Dibangun untuk counter/gudang yang memproses puluhan paket per hari dan butuh
-catatan kas yang rapi tanpa software akuntansi yang berat.
+[![React](https://img.shields.io/badge/React-18.3-61DAFB?style=flat-square&logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Vite-5.4-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License](https://img.shields.io/badge/License-MIT-16A34A?style=flat-square)](LICENSE)
 
-![Dashboard Janka](docs/screenshot-dashboard.png)
+*A Enterprise-Grade, Lightweight Logistics Ledger & Thermal Label Printing Workstation*
+
+[Fitur Utama](#-fitur-unggulan) • [Alur Kerja](#-alur-kerja-operasional-harian) • [Tangkapan Layar](#-tangkapan-layar-sistem) • [Spesifikasi Excel](#-spesifikasi-ekspor-excel) • [Panduan Dev](#-panduan-pengembangan-lokal)
+
+</div>
 
 ---
 
-## Daftar Isi
+## 📌 Deskripsi Sistem
 
-| Bagian | Isi |
-| ------ | --- |
-| [Fitur](#fitur) | 8 kemampuan utama app |
-| [Alur kerja harian](#alur-kerja-harian) | Rutinitas pagi → malam |
-| [Format Excel](#format-excel) | Spek 6 kolom + sheet bulanan |
-| [Tarif](#tarif) | Tabel Rp/kg per kurir |
-| [Menjalankan lokal](#menjalankan-lokal) | Dev, build, self-test |
-| [Struktur proyek](#struktur-proyek) | Peta folder src/ |
-| [Alur data](#alur-data) | Diagram aliran data |
-| [Data & privasi](#data--privasi) | Penyimpanan lokal |
-| [Stack](#stack) | Teknologi yang dipakai |
+**JANKA** adalah platform manajemen operasional *petty cash* dan pencatatan manifest logistik harian yang dirancang khusus untuk counter, gudang, dan hub pengiriman ekspedisi (J&T Express & JNE Express). JANKA memangkas kerumitan akuntansi gudang dengan sistem terpadu: pencatatan paket kilat, kalkulasi otomatis ongkir/tarif, notifikasi WhatsApp instan, pratinjau & pencetakan label thermal 100x150mm, rekonsiliasi data kurir malam hari, serta ekspor laporan kas bulanan siap audit.
 
-## Fitur
+---
 
-| Area | Isi |
-| ---- | --- |
-| Entry manifest | Tanggal, No. Kirim otomatis, pengirim + address book, Jenis Paket (REGULER / REGULER DFOD), Jumlah auto-tarif (bisa override), Jenis Transaksi (CASH / BCA / BRI / MANDIRI) |
-| Data label | Nama/alamat penerima + berat di panel lipat, khusus untuk cetak resi |
-| Cetak resi | Label thermal 100x150mm dengan barcode |
-| Dashboard | Total paket, total nominal, rata-rata per kg, breakdown per kurir |
-| Filter & sortir | Rentang tanggal, kurir, sortir kolom |
-| Rekonsiliasi | Import XLSX harian kurir, pencocokan No. Resi otomatis dengan preview |
-| Export Excel | Worksheet per bulan, judul KAS REGULER, 6 kolom operasional, baris TOTAL (SUM), landscape fit-to-page |
-| Kelola data | Edit entri, hapus dengan konfirmasi |
+## 🖼️ Tangkapan Layar Sistem
 
-## Alur kerja harian
+### 📊 1. Dashboard & Analytics Operasional
+> *Pusat pengawasan metrik kas, sparkline tren volume 14 hari, alokasi pengiriman per kurir, serta rekapitulasi bulanan.*
+![Dashboard Analytics](docs/screenshot-dashboard.png)
 
-1. **Pagi** — Buka app, cek dashboard sisa kemarin bila perlu.
-2. **Tiap paket datang** — Isi form (pengirim → penerima → berat), klik
-   generate: No. Kirim terbit, nominal kehitung dari tarif, data tersimpan.
-3. **Cetak resi** — Buka entri, cetak label thermal, tempel ke paket.
-4. **Malam** — Import file XLSX kurir via Rekonsiliasi untuk cek No. Resi
-   yang belum cocok, lalu Export Excel untuk arsip.
+### 📝 2. Stasiun Input Manifest & Cetak Label
+> *Formulir pencatatan ekspres dengan fitur kalkulasi otomatis tarif, notifikasi WhatsApp pengirim, dan modal pratinjau cetak label thermal 100x150mm.*
+![Input Manifest Station](docs/screenshot-input.png)
 
-## Format Excel
+### 📖 3. Buku Ledger & Pencarian Manifest
+> *Tabel arsip manifest berukuran penuh dengan filter rentang tanggal, filter kurir, pencarian resi/pengirim, dan ekspor data Excel.*
+![Buku Ledger Table](docs/screenshot-ledger.png)
 
-Setiap bulan mendapat worksheet sendiri (`September 2026`, dst.):
+---
 
-- Judul grup **KAS REGULER** + periode di baris atas
-- Kolom persis: `TANGGAL | NO. KIRIM | NAMA PENGIRIM | JENIS PAKET | JUMLAH | JENIS TRANSAKSI`
-- Tanggal `dd/mm/yyyy`, Jumlah format `Rp` rata kanan
-- Baris **TOTAL** memakai formula `SUM` asli (tetap hidup di Excel)
-- Freeze header, repeat header tiap halaman cetak
-- Nama file: `janka-petty-cash-YYYY-MM-DD.xlsx`
+## ✨ Fitur Unggulan
 
-## Tarif
+### 📊 1. Analytics & Executive Reporting
+* **Dashboard Metrik Real-Time**: Pemantauan instan Total Manifest, Total Kas Keluar (Rp), Akumulasi Berat (kg), Efisiensi Biaya/kg, dan Rata-rata Berat per Paket.
+* **Sparkline Tren 14-Hari**: SVG tren volume harian interaktif dilengkapi node tooltip detail saat di-hover.
+* **Breakdown Alokasi Kurir**: Visualisasi proporsi kas dan volume ekspedisi (J&T vs JNE) menggunakan CSS mini bar chart.
+* **Quick Executive Digest**: Format memo markdown siap copy untuk laporan harian WhatsApp direksi / manajemen.
 
-Tarif default per kilogram, bisa diubah di Rate Settings:
+### 📝 2. Entry Manifest & Operational Workstation
+* **Kalkulasi Tarif Otomatis**: Perhitungan otomatis berdasarkan tarif per kg (bisa di-override manual untuk paket DFOD / khusus).
+* **Address Book & Auto-Complete**: Penyimpan riwayat alamat dan pengirim untuk mempercepat pencatatan paket langganan.
+* **Thermal Label Generator**: Pratinjau proporsional & cetak label thermal standar 100x150mm lengkap dengan barcode & notifikasi WhatsApp.
 
-| Kurir | Rp/kg |
-| ----- | ----- |
-| JT    | 12.000 |
-| JNE   | 10.000 |
+### 📑 3. Ledger & Audit Ready Reporting
+* **ExcelJS Engine (KAS REGULER)**: Ekspor otomatis laporan kas bulanan dengan worksheet khusus per bulan (`September 2026`, dst.), header freeze, formula `SUM` asli, dan format 6-kolom siap audit.
+* **Rekonsiliasi J&T Malam**: Pencocokan otomatis manifest lokal dengan file XLSX laporan kurir untuk mendeteksi resi gantung / belum terproses.
+* **JSON Backup & Restore**: Portabilitas data penuh dengan opsi simpan dan pulihkan cadangan JSON lokal tanpa ketergantungan server luar.
 
-Nominal per entri selalu bisa dioverride manual (misal paket DFOD / harga khusus).
+---
 
-## Menjalankan lokal
-
-Prasyarat: Node.js 18+.
-
-```bash
-npm install
-npm run dev      # dev server di http://127.0.0.1:5173
-npm run build    # build produksi ke dist/
-node test_logic.mjs   # self-test logika (Excel, tarif, rekonsiliasi)
-```
-
-## Struktur proyek
-
-```text
-src/
-  App.tsx               # shell + layout dua kolom
-  components/           # EntryForm, LedgerTable, FilterBar, DashboardSummary,
-                        # PrintLabelDialog, ReconcileDialog, DeleteConfirmDialog,
-                        # RateSettingsDialog
-  hooks/useShipments.ts # state + persistensi localStorage
-  lib/excel.ts          # export workbook sheet-bulanan (exceljs)
-  lib/formatters.ts     # Rupiah, tanggal, resi
-  types.ts              # model ShipmentEntry
-test_logic.mjs          # self-test tanpa runner
-```
-
-## Alur data
+## 🔄 Alur Kerja Operasional Harian
 
 ```mermaid
-flowchart LR
-    A[EntryForm] --> B[useShipments]
-    B --> C[(localStorage)]
-    B --> D[LedgerTable + Dashboard]
-    B --> E[PrintLabelDialog]
-    F[XLSX kurir] --> G[ReconcileDialog]
-    G --> B
-    B --> H[lib/excel.ts]
-    H --> I[(Petty Cash .xlsx)]
+flowchart TD
+    subgraph Pagi [08:00 WIB — Inisialisasi]
+        A[Buka JANKA Dashboard] --> B[Cek Status Sistem & Kas Kemarin]
+    end
+
+    subgraph Operasional [09:00 - 17:00 WIB — Transaksi]
+        C[Paket Datang] --> D[Input Manifest Paket]
+        D --> E{Opsi Tindakan}
+        E -->|Cetak Label| F[Pratinjau Label 100x150mm & Print]
+        E -->|Kirim Resi| G[WhatsApp Broadcast ke Pengirim]
+    end
+
+    subgraph Closing [18:00 WIB — Rekonsiliasi & Audit]
+        H[Import XLSX Laporan Kurir] --> I[Jalankan Auto-Reconcile]
+        I --> J[Cek Selisih & Status Resi]
+        J --> K[Ekspor Laporan Excel 6-Kolom Siap Audit]
+    end
 ```
 
-## Data & privasi
+---
 
-Seluruh data tersimpan lokal di browser (`localStorage` kunci
-`janka_shipments_v1`). Tidak ada akun, server, atau telemetri — file Excel
-yang diekspor adalah satu-satunya data yang keluar dari aplikasi.
+## 📑 Spesifikasi Ekspor Excel
 
-## Stack
+Format berkas ekspor (`.xlsx`) dirancang mengikuti standar pembukuan akuntansi kas reguler:
 
-React 18 · Vite 5 · Tailwind CSS 3 · TypeScript · exceljs (export) ·
-xlsx (import). Tanpa backend, tanpa database.
+| Parameter | Spesifikasi |
+| :--- | :--- |
+| **Worksheet / Sheet** | Dipisah per bulan secara otomatis (`September 2026`, `Agustus 2026`, dll.) |
+| **Grup Judul** | **KAS REGULER** + Periode Pembukuan di baris teratas |
+| **Struktur 6 Kolom** | `TANGGAL` \| `NO. KIRIM` \| `NAMA PENGIRIM` \| `JENIS PAKET` \| `JUMLAH` \| `JENIS TRANSAKSI` |
+| **Formula Akuntansi** | Baris TOTAL menggunakan formula `=SUM(E5:E...)` asli (hidup di MS Excel / LibreOffice) |
+| **Tata Letak Cetak** | Landscape, Fit-to-Page Width, Freeze Panes pada Header Tabel |
+
+---
+
+## 🛠️ Panduan Pengembangan Lokal
+
+### Prasyarat
+* Node.js v18.0.0 atau lebih baru
+* npm v9.0.0 atau lebih baru
+
+### Langkah Installasi & Dev Server
+
+```bash
+# 1. Clone repositori
+git clone https://github.com/kaarlyz/janka.git
+cd janka
+
+# 2. Install dependensi
+npm install
+
+# 3. Jalankan development server
+npm run dev
+# Server lokal berjalan di: http://127.0.0.1:5173
+
+# 4. Jalankan pengujian logika otomatis (Self-Test)
+node test_logic.mjs
+
+# 5. Build untuk produksi
+npm run build
+```
+
+---
+
+## 🏗️ Arsitektur & Teknologi
+
+* **Frontend**: React 18, Vite 5, TypeScript 5, Tailwind CSS 3
+* **Iconography**: Lucide React
+* **Excel Engine**: ExcelJS (Generasi workbook & worksheet spreadsheet murni browser)
+* **Storage & Privacy**: 100% Client-side `localStorage` (`janka_shipments_v1` & `janka_rates_v1`) — *Zero server tracking*.
+
+---
+
+<div align="center">
+
+*JANKA Logistics Ledger System — Built with Precision for Daily Warehouse Operations*
+
+</div>
